@@ -1,0 +1,37 @@
+/* Inyección del footer – intenta raíz; si falla, fallback mínimo */
+(function(){
+  const mount = document.getElementById('global-footer');
+  if(!mount) return;
+
+  fetch('footer.html', { cache: 'no-store' })
+    .then(r=> r.ok ? r.text() : Promise.reject())
+    .then(html => mount.innerHTML = html)
+    .catch(()=>{
+      mount.innerHTML = `
+        <footer class="footer">
+          <div class="container">
+            <div class="cols">
+              <div>
+                <h3 class="m-0" style="color:#fff">MagicColombia</h3>
+                <p class="small">Desde 2002 con la comunidad TCG.</p>
+              </div>
+              <div>
+                <h4 class="m-0" style="color:#fff">Links Rápidos</h4>
+                <ul class="small" style="list-style:none; padding:0; margin:.5rem 0 0">
+                  <li><a href="#">Búsqueda</a></li>
+                  <li><a href="#">Términos del servicio</a></li>
+                  <li><a href="#">Política de reembolso</a></li>
+                </ul>
+              </div>
+              <div>
+                <h4 class="m-0" style="color:#fff">Sobre Nosotros</h4>
+                <p class="small">Carrera 65 # 5-107 Cali - Colombia · 
+                   E-mail: <a href="mailto:ventas@magiccolombia.com">ventas@magiccolombia.com</a> ·
+                   WhatsApp/Celular <a href="https://wa.me/573045511764" target="_blank" rel="noopener">3045511764</a></p>
+              </div>
+            </div>
+            <p class="small" style="margin-top:16px">© 2025 MagicColombia. Todos los derechos reservados.</p>
+          </div>
+        </footer>`;
+    });
+})();

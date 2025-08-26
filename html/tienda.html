@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="es-CO">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Todos los productos — MagicColombia</title>
+
+  <link rel="stylesheet" href="../css/style.magiccolombia.css" />
+  <link rel="icon" type="image/png" href="../images/Logo/01.png" />
+</head>
+
+<body class="theme-light page-catalog-all density-roomy" style="--thumb-h:220px">
+  <!-- HEADER (mismo del sitio) -->
+  <header class="site-header">
+    <div class="nav">
+      <div class="nav-left">
+        <a class="brand" href="../index.html" aria-label="MagicColombia">
+          <img src="../images/Logo/01.png" alt="MagicColombia">
+        </a>
+        <nav id="primary-menu" class="menu menu-icons" aria-label="Navegación principal">
+          <a href="tienda.html" class="icon-link" aria-current="page" title="Catálogo" aria-label="Catálogo">
+            <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/>
+              <rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/>
+            </svg>
+            <span class="sr-only">Catálogo</span>
+          </a>
+          <a href="blog.html" class="icon-link" title="Post" aria-label="Post">
+            <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <rect x="3" y="4" width="18" height="16" rx="2"/>
+              <line x1="7" y1="8" x2="17" y2="8"/>
+              <line x1="7" y1="12" x2="17" y2="12"/>
+              <line x1="7" y1="16" x2="12" y2="16"/>
+            </svg>
+            <span class="sr-only">Post</span>
+          </a>
+        </nav>
+      </div>
+
+      <div class="auth-ctas">
+        <a class="btn-outline" href="login.html">Iniciar sesión</a>
+        <a class="btn" href="account.html">Registrar</a>
+      </div>
+
+      <button class="burger" type="button" data-menu-toggle aria-label="Abrir menú"
+              aria-controls="primary-menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="container pad-y">
+      <h1 class="h2">Todos los productos</h1>
+
+      <!-- FILTROS (usa las clases del CSS) -->
+      <div class="filters-card mt-3" id="filters">
+        <!-- fila 1 -->
+        <div class="filters-row wrap">
+          <div class="field grow with-icon">
+            <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+              <circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input id="q" class="input pill" type="search" placeholder="Buscar producto…" autocomplete="off" />
+          </div>
+
+          <select id="sort" class="select pill" aria-label="Ordenar">
+            <option value="name-asc">Alfabéticamente, A–Z</option>
+            <option value="name-desc">Alfabéticamente, Z–A</option>
+            <option value="price-asc">Precio, menor a mayor</option>
+            <option value="price-desc">Precio, mayor a menor</option>
+          </select>
+
+          <div class="view-group" role="group" aria-label="Densidad">
+            <button id="densCompact" class="icon-pill" title="Compacto" aria-pressed="false">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/></svg>
+            </button>
+            <button id="densStandard" class="icon-pill is-active" title="Estándar" aria-pressed="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/></svg>
+            </button>
+            <button id="densRoomy" class="icon-pill" title="Amplio" aria-pressed="false">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></svg>
+            </button>
+          </div>
+
+          <label class="switch" title="Solo disponibles">
+            <input id="onlyInStock" type="checkbox" />
+            <span></span><em>Solo disponibles</em>
+          </label>
+
+          <div class="count small">Mostrando <span id="count">0</span> productos</div>
+          <button id="clear" class="link-clean" type="button">Limpiar filtros</button>
+        </div>
+
+        <!-- fila 2 chips -->
+        <div class="filters-row chips">
+          <button class="chip is-active" data-cat="all"><span class="dot" style="background:#7c3aed"></span> Todas</button>
+          <button class="chip" data-cat="boardgame"><span class="dot" style="background:#059669"></span> Juegos de mesa</button>
+          <button class="chip" data-cat="TCG / Cartas"><span class="dot" style="background:#0ea5e9"></span> TCG / Cartas</button>
+          <button class="chip" data-cat="Accesorios"><span class="dot" style="background:#f59e0b"></span> Accesorios</button>
+          <button class="chip" data-tag="lanzamiento"><span class="dot" style="background:#8b5cf6"></span> Lanzamiento</button>
+
+          <div class="price-range" style="margin-left:auto;display:flex;gap:10px;align-items:center">
+            <input id="minPrice" type="number" class="input pill sm" placeholder="Mín $" min="0" inputmode="numeric">
+            <span class="dash">—</span>
+            <input id="maxPrice" type="number" class="input pill sm" placeholder="Máx $" min="0" inputmode="numeric">
+          </div>
+        </div>
+      </div>
+
+      <!-- GRID -->
+      <ul id="product-grid" class="fc-grid" aria-live="polite" style="margin-top:24px;"></ul>
+    </section>
+    
+  </main>
+<!-- PAGINACIÓN -->
+<nav id="pager" class="pagination" aria-label="Paginación"></nav>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container grid">
+      <section>
+        <h4>MagicColombia</h4>
+        <p>Desde 2002 con la comunidad TCG.</p>
+        <small>© 2025 MagicColombia. Todos los derechos reservados.</small>
+      </section>
+      <section>
+        <h4>Links Rápidos</h4>
+        <ul>
+          <li><a href="search.html">Búsqueda</a></li>
+          <li><a href="terminos.html">Términos del servicio</a></li>
+          <li><a href="reembolsos.html">Política de reembolso</a></li>
+        </ul>
+      </section>
+      <section>
+        <h4>Sobre Nosotros</h4>
+        <p>Carrera 65 # 5-107 · Cali · Colombia</p>
+        <p>E-mail: <a href="mailto:ventas@magiccolombia.com">ventas@magiccolombia.com</a></p>
+        <p>WhatsApp/Celular 3045511764</p>
+      </section>
+    </div>
+  </footer>
+
+  <!-- JS (orden correcto: data -> lanzamientos -> lógica de tienda) -->
+  <script src="../js/data.products.js" defer></script>
+  <script src="../js/products.lanzamiento.js" defer></script>
+  <script src="../js/tienda.js" defer></script>
+</body>
+</html>

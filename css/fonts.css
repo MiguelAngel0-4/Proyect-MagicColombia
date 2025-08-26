@@ -1,0 +1,41 @@
+/* MagicColombia – Fuentes web (self-hosted)
+   Coloca este archivo como: css/fonts.css
+   Requiere que existan los archivos en: fonts/OpenSans-Regular-webfont.woff2 (.woff opcional)
+   font-display: swap evita bloqueo de render y FOIT
+*/
+
+/* Open Sans – regular (400) */
+@font-face{
+  font-family: "Open Sans";
+  src: url("../fonts/OpenSans-Regular-webfont.woff2") format("woff2"),
+       url("../fonts/OpenSans-Regular-webfont.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Config global de tipografías */
+:root{
+  --font-ui: "Open Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+             Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+}
+
+body{
+  font-family: var(--font-ui);
+  font-synthesis-weight: auto;
+  text-rendering: optimizeLegibility;
+}
+
+/* Titulares un poco más marcados con la misma familia */
+h1, h2, h3{ font-weight: 600; }
+
+/* === Opcional: añade Semibold (600) si agregas los archivos correspondientes ===
+@font-face{
+  font-family: "Open Sans";
+  src: url("../fonts/OpenSans-Semibold-webfont.woff2") format("woff2"),
+       url("../fonts/OpenSans-Semibold-webfont.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+*/

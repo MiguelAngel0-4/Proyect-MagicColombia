@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="es-CO">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Iniciar sesión — MagicColombia</title>
+
+  <link rel="stylesheet" href="../css/style.magiccolombia.css">
+  <link rel="icon" type="image/png" href="../images/Logo/01.png">
+
+  <!-- Micro-estilos locales para el card de login -->
+  <style>
+    :root { --brand:#6d28d9; --line:rgba(0,0,0,.08); --muted:#6b7280; }
+    .auth-wrap{display:grid;place-items:center}
+    .auth-card{width:100%;max-width:560px;background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 16px 40px rgba(0,0,0,.08);padding:22px}
+    .auth-head{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+    .auth-sub{color:var(--muted);margin:0 0 12px}
+    .auth-form{display:grid;gap:12px}
+    .input{height:44px;border-radius:12px;border:1px solid var(--line);padding:0 12px;background:#fff}
+    .input:focus{outline:2px solid rgba(109,40,217,.15);border-color:var(--brand)}
+    .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+    .hint{color:var(--muted);font-size:.9rem}
+    .btns{display:flex;gap:10px;flex-wrap:wrap}
+    .hr{height:1px;background:var(--line);margin:14px 0}
+    .social{display:flex;gap:10px;flex-wrap:wrap}
+    .btn-icon{display:inline-flex;align-items:center;gap:8px}
+    .btn-icon svg{width:18px;height:18px}
+  </style>
+</head>
+
+<!-- Consistencia con la tienda -->
+<body class="theme-light density-roomy">
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="nav">
+      <div class="nav-left">
+        <a class="brand" href="../index.html" aria-label="MagicColombia">
+          <img src="../images/Logo/01.png" alt="MagicColombia">
+        </a>
+        <nav id="primary-menu" class="menu menu-icons" aria-label="Navegación principal">
+          <a href="tienda.html" class="icon-link" title="Catálogo" aria-label="Catálogo">
+            <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/>
+              <rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/>
+            </svg>
+            <span class="sr-only">Catálogo</span>
+          </a>
+          <a href="blog.html" class="icon-link" title="Post" aria-label="Post">
+            <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <rect x="3" y="4" width="18" height="16" rx="2"/>
+              <line x1="7" y1="8" x2="17" y2="8"/>
+              <line x1="7" y1="12" x2="17" y2="12"/>
+              <line x1="7" y1="16" x2="12" y2="16"/>
+            </svg>
+            <span class="sr-only">Post</span>
+          </a>
+        </nav>
+      </div>
+
+      <button class="burger" type="button" data-menu-toggle aria-label="Abrir menú"
+              aria-controls="primary-menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- AIRE RÁPIDO Y SEGURO: margen arriba y abajo -->
+  <main class="container pad-y auth-wrap" style="margin-top:24px;margin-bottom:24px">
+    <section class="auth-card">
+      <div class="auth-head">
+        <h1 class="h4 m-0">Inicio de sesión</h1>
+      </div>
+      <p class="auth-sub">Accede a tu cuenta para ver pedidos y guardar favoritos.</p>
+
+      <form id="loginForm" class="auth-form" novalidate>
+        <label class="visually-hidden" for="email">Correo electrónico</label>
+        <input class="input" id="email" type="email" placeholder="Correo electrónico" autocomplete="username" required>
+
+        <div>
+          <label class="visually-hidden" for="password">Contraseña</label>
+          <div class="row">
+            <input class="input" id="password" type="password" placeholder="Contraseña" autocomplete="current-password" required style="flex:1">
+            <button id="togglePass" type="button" class="btn-outline" aria-pressed="false" aria-label="Mostrar contraseña">Ver</button>
+          </div>
+          <div class="row" style="justify-content:space-between;margin-top:6px">
+            <label class="hint"><input type="checkbox" id="remember"> Recordarme</label>
+            <a class="hint" href="#" title="Recuperar contraseña">¿Olvidaste tu contraseña?</a>
+          </div>
+        </div>
+
+        <div class="btns">
+          <button class="btn" type="submit">Iniciar sesión</button>
+          <a class="btn-outline" href="account.html">Crear cuenta</a>
+        </div>
+
+        <div class="hr" role="separator" aria-label="o"></div>
+
+        <div class="social">
+          <button type="button" class="btn-outline btn-icon" aria-label="Continuar con Google">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle></svg>
+            Continuar con Google
+          </button>
+          <button type="button" class="btn-outline btn-icon" aria-label="Continuar con Facebook">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="3"></rect></svg>
+            Facebook
+          </button>
+        </div>
+
+        <p id="errorMsg" class="hint" style="color:#b91c1c;display:none;margin-top:8px">Revisa tu correo y contraseña.</p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container grid">
+      <section>
+        <h4>MagicColombia</h4>
+        <p>Desde 2002 con la comunidad TCG.</p>
+        <small>© 2025 MagicColombia. Todos los derechos reservados.</small>
+      </section>
+      <section>
+        <h4>Links Rápidos</h4>
+        <ul>
+          <li><a href="search.html">Búsqueda</a></li>
+          <li><a href="terminos.html">Términos del servicio</a></li>
+          <li><a href="reembolsos.html">Política de reembolso</a></li>
+        </ul>
+      </section>
+      <section>
+        <h4>Sobre Nosotros</h4>
+        <p>Carrera 65 # 5-107 · Cali · Colombia</p>
+        <p>E-mail: <a href="mailto:ventas@magiccolombia.com">ventas@magiccolombia.com</a></p>
+        <p>WhatsApp/Celular 3045511764</p>
+      </section>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      const $form = document.getElementById('loginForm');
+      const $email = document.getElementById('email');
+      const $pass = document.getElementById('password');
+      const $toggle = document.getElementById('togglePass');
+      const $error = document.getElementById('errorMsg');
+
+      $toggle.addEventListener('click', () => {
+        const show = $pass.type === 'password';
+        $pass.type = show ? 'text' : 'password';
+        $toggle.setAttribute('aria-pressed', show ? 'true' : 'false');
+        $toggle.textContent = show ? 'Ocultar' : 'Ver';
+        $pass.focus();
+      });
+
+      $form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const ok = $email.value.includes('@') && $pass.value.trim().length >= 4;
+        $error.style.display = ok ? 'none' : 'block';
+        if (ok) {
+          alert('¡Bienvenido!');
+          location.href = 'tienda.html';
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

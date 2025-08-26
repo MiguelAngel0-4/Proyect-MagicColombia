@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es-CO">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Pokémon — MagicColombia</title>
+  <meta name="description" content="Explora todos los productos de Pokémon disponibles en MagicColombia.">
+
+  <!-- favicon como en index -->
+  <link rel="icon" type="image/png" href="../images/Logo/01.png">
+
+  <link rel="stylesheet" href="../css/style.magiccolombia.css">
+</head>
+<body class="page-pokemon">
+
+  <!-- ===== Header / Menú ===== -->
+  <header class="site-header">
+    <nav class="nav container">
+      <div class="nav-left">
+        <a class="brand" href="../index.html" aria-label="Inicio">
+          <!-- ruta corregida (respeta mayúsculas del folder Logo) -->
+          <img src="../images/Logo/01.png" alt="MagicColombia" width="120" height="32">
+        </a>
+
+        <div class="menu menu-icons" aria-label="Secciones">
+          <!-- Catálogo -->
+          <a class="icon-link" href="./catalogo.html" title="Catálogo" aria-label="Catálogo">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+              <rect x="3" y="3" width="7" height="7" rx="2"></rect>
+              <rect x="14" y="3" width="7" height="7" rx="2"></rect>
+              <rect x="3" y="14" width="7" height="7" rx="2"></rect>
+              <rect x="14" y="14" width="7" height="7" rx="2"></rect>
+            </svg>
+          </a>
+          <!-- Blog -->
+          <a class="icon-link" href="./blog.html" title="Blog" aria-label="Blog">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+              <path d="M4 4h16v14a2 2 0 0 1-2 2H4z"></path>
+              <path d="M8 8h8"></path><path d="M8 12h6"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="auth-ctas">
+        <a class="btn-outline" href="./login.html">Iniciar sesión</a>
+        <a class="btn" href="./login.html">Registrar</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Héroe -->
+    <section class="hero pkm-hero container mt-4">
+      <div class="grid-hero">
+        <div class="hero-copy">
+          <h1>Pokémon | Colección</h1>
+          <p>Explora todos los productos de Pokémon disponibles en MagicColombia.</p>
+          <p><a class="btn btn-primary" href="./tienda.html#product-grid">Ver en tienda</a></p>
+        </div>
+        <div class="hero-media">
+          <!-- Reemplaza SOLO el src por la extensión correcta -->
+<img id="pkm-hero" src="../images/pokemon/img.1.jpg" alt="Colección Pokémon" width="720" height="480" loading="eager">
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Barra filtros / ordenar / conteo -->
+    <section class="pkm-container container">
+      <div class="pkm-toolbar">
+        <div class="left">
+          <span class="muted">Filtrar:</span>
+
+          <!-- Precio -->
+          <span class="pkm-wrap">
+            <button id="btn-price" class="pkm-pill" aria-haspopup="true" aria-expanded="false">Precio ▾</button>
+            <div id="menu-price" class="pkm-flyout" role="menu" aria-labelledby="btn-price" hidden>
+              <button type="button" data-price="all">Todos los precios</button>
+              <button type="button" data-price="le150">Hasta $150.000</button>
+              <button type="button" data-price="150-200">$150.000 – $200.000</button>
+              <button type="button" data-price="ge200">Desde $200.000</button>
+            </div>
+          </span>
+
+          <!-- Idioma (solo 2 opciones) -->
+          <span class="pkm-wrap">
+            <button id="btn-lang" class="pkm-pill" aria-haspopup="true" aria-expanded="false">Idioma ▾</button>
+            <div id="menu-lang" class="pkm-flyout" role="menu" aria-labelledby="btn-lang" hidden>
+              <button type="button" data-lang="all">Todos</button>
+              <button type="button" data-lang="es">Español</button>
+              <button type="button" data-lang="en">Inglés</button>
+            </div>
+          </span>
+        </div>
+
+        <div class="right">
+          <span class="muted">Ordenar por:</span>
+
+          <span class="pkm-wrap">
+            <button id="btn-sort" class="pkm-pill" aria-haspopup="true" aria-expanded="false">Más vendidos ▾</button>
+            <div id="menu-sort" class="pkm-flyout" role="menu" aria-labelledby="btn-sort" hidden>
+              <button type="button" data-sort="bestsellers">Más vendidos</button>
+              <button type="button" data-sort="price-asc">Precio: menor a mayor</button>
+              <button type="button" data-sort="price-desc">Precio: mayor a menor</button>
+            </div>
+          </span>
+
+          <span class="muted"><span id="pkm-count">0</span> productos</span>
+        </div>
+      </div>
+
+      <!-- Grilla (el JS la llena) -->
+      <div id="pokemon-grid" class="pkm-grid"></div>
+    </section>
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer class="site-footer">
+    <div class="container grid">
+      <div>
+        <h4>MagicColombia</h4>
+        <p>Desde 2002 con la comunidad TCG.</p>
+        <small>© 2025 MagicColombia. Todos los derechos reservados.</small>
+      </div>
+
+      <div>
+        <h4>Links Rápidos</h4>
+        <ul>
+          <li><a href="./busqueda.html">Búsqueda</a></li>
+          <li><a href="./terminos.html">Términos del servicio</a></li>
+          <li><a href="./reembolsos.html">Política de reembolso</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Sobre Nosotros</h4>
+        <ul>
+          <li>Carrera 65 # 5-107 · Cali · Colombia</li>
+          <li>E-mail: <a href="mailto:ventas@magiccolombia.com">ventas@magiccolombia.com</a></li>
+          <li>WhatsApp/Celular 3045511764</li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts: dataset primero, luego lógica -->
+  <script src="../js/data.products.js"></script>
+  <script src="../js/pokemon.js"></script>
+
+  <!-- Fallback por si la imagen del héroe no existe en esa ruta -->
+  <script>
+    (function(){
+      var img=document.getElementById('pkm-hero'); if(!img) return;
+      var tries=['../images/pokemon/img.1.png','../images/pokemon/img.1.jpg','../images/pokemon/img.1.jpeg','../images/pokemon/img.1.webp'];
+      var i=0; img.onerror=function(){ if(++i<tries.length) img.src=tries[i]; };
+    })();
+  </script>
+</body>
+</html>

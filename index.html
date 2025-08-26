@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="es-CO">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>MagicColombia — Inicio</title>
+
+  <link rel="stylesheet" href="css/style.magiccolombia.css">
+  <link rel="icon" type="image/png" href="images/Logo/01.png">
+</head>
+
+<body class="theme-light page-home">
+  <!-- Preloader -->
+  <div id="preloader" role="status" aria-live="polite" aria-label="Cargando">
+    <div class="spinner" aria-hidden="true"></div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="nav">
+      <div class="nav-left">
+        <a class="brand" href="index.html" aria-label="MagicColombia">
+          <img src="images/Logo/01.png" alt="MagicColombia">
+        </a>
+
+        <nav id="primary-menu" class="menu menu-icons" aria-label="Navegación principal">
+          <a href="html/catalogo.html" class="icon-link" title="Catálogo" aria-label="Catálogo">
+            <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/>
+              <rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/>
+            </svg>
+            <span class="sr-only">Catálogo</span>
+          </a>
+          <a href="html/blog.html" class="icon-link" title="Post" aria-label="Post">
+            <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <rect x="3" y="4" width="18" height="16" rx="2"/>
+              <line x1="7" y1="8" x2="17" y2="8"/>
+              <line x1="7" y1="12" x2="17" y2="12"/>
+              <line x1="7" y1="16" x2="12" y2="16"/>
+            </svg>
+            <span class="sr-only">Post</span>
+          </a>
+        </nav>
+      </div>
+
+      <div class="auth-ctas">
+        <a class="btn-outline" href="html/login.html">Iniciar sesión</a>
+        <a class="btn" href="html/account.html">Registrar</a>
+      </div>
+
+      <button class="burger" type="button" data-menu-toggle aria-label="Abrir menú"
+              aria-controls="primary-menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO / CARRUSEL -->
+    <section class="container mt-4">
+      <div class="hero-carousel" id="heroCarousel" aria-label="Promociones">
+        <div class="carousel-track">
+          <figure class="slide is-active">
+            <img src="images/carrusel/img.1.jpg" alt="Colecciones TCG en Colombia">
+            <figcaption class="callout">
+              <h1>Tu tienda TCG en Colombia</h1>
+              <p>Cartas sueltas, boosters y accesorios. Envíos a todo el país.</p>
+              <a href="html/catalogo.html" class="btn">Ver productos</a>
+            </figcaption>
+          </figure>
+
+          <figure class="slide">
+            <img src="images/carrusel/img.2.jpg" alt="Nuevos lanzamientos y preventas">
+            <figcaption class="callout">
+              <h2>Nuevos lanzamientos</h2>
+              <p>Reserva tus productos en preventa y no te quedes sin ellos.</p>
+              <a href="html/catalogo.html" class="btn">Ir al catálogo</a>
+            </figcaption>
+          </figure>
+
+          <figure class="slide">
+            <img src="images/carrusel/img.5.jpg" alt="Preventa y novedades">
+            <figcaption class="callout">
+              <h2>Preventa</h2>
+              <p>Reserva tus productos y recibe primero.</p>
+              <a href="html/catalogo.html" class="btn">Ir al catálogo</a>
+            </figcaption>
+          </figure>
+
+          <figure class="slide">
+            <img src="images/carrusel/img.4.jpg" alt="Accesorios y sleeves">
+            <figcaption class="callout">
+              <h2>Accesorios</h2>
+              <p>Protectores, deck box, playmats y más.</p>
+              <a href="html/catalogo.html" class="btn">Comprar</a>
+            </figcaption>
+          </figure>
+        </div>
+
+        <button class="ctrl prev" aria-label="Anterior">
+          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+            <path d="M15.5 19l-7-7 7-7" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <button class="ctrl next" aria-label="Siguiente">
+          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+            <path d="M8.5 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+
+        <div class="dots" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <!-- VIDEO 1 · Final Fantasy -->
+    <section class="container mt-6">
+      <h2>Lo que viene 🔥 | Final Fantasy x MTG</h2>
+      <div class="video-wrapper mt-3">
+        <a class="yt-btn" href="https://www.youtube.com/watch?v=NYyRcliMZO4" target="_blank" rel="noopener">
+          Mirar en YouTube
+        </a>
+        <iframe
+          src="https://www.youtube.com/embed/NYyRcliMZO4?rel=0"
+          title="Final Fantasy x MTG"
+          loading="lazy"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen></iframe>
+      </div>
+    </section>
+
+    <!-- LANZAMIENTO · Final Fantasy (sus propias imágenes) -->
+    <section class="container mt-6">
+      <h2 class="h3">Lo que encuentras de este lanzamiento:</h2>
+
+      <div class="release-grid mt-3">
+        <!-- 1 -->
+        <a class="release-card"
+           href="html/tienda.html?q=Final%20Fantasy&cat=TCG%20%2F%20Cartas#product-grid"
+           aria-label="MTG Final Fantasy — Commander Deck Display (4 Motivos)">
+          <div class="r-media">
+            <img src="images/lanzamiento/img.1.jpg"
+                 alt="MTG Final Fantasy — Commander Deck Display (4 Motivos)">
+          </div>
+          <div class="r-info">
+            <span class="badge out">Agotado</span>
+            <h3 class="r-title">MTG: Universes Beyond | Final Fantasy — Commander Deck Display (4 Motivos)</h3>
+            <div class="r-price">
+              <span class="price-old">$ 350.000,00</span>
+              <span class="price">$ 320.000 COP</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- 2 -->
+        <a class="release-card"
+           href="html/tienda.html?q=Final%20Fantasy&cat=TCG%20%2F%20Cartas#product-grid"
+           aria-label="MTG Final Fantasy — Commander Deck, Collector Edition Display">
+          <div class="r-media">
+            <img src="images/lanzamiento/img.2.jpg"
+                 alt="MTG Final Fantasy — Commander Deck, Collector Edition Display (4 variantes)">
+          </div>
+          <div class="r-info">
+            <span class="badge out">Agotado</span>
+            <h3 class="r-title">MTG: Universes Beyond | Final Fantasy — Commander Deck, Collector Edition Display (4 variantes)</h3>
+            <div class="r-price">
+              <span class="price">$ 599.000 COP</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- 3 -->
+        <a class="release-card"
+           href="html/tienda.html?q=Final%20Fantasy&cat=TCG%20%2F%20Cartas#product-grid"
+           aria-label="MTG Final Fantasy — Bundle">
+          <div class="r-media">
+            <img src="images/lanzamiento/img.3.jpg" alt="MTG Final Fantasy — Bundle">
+          </div>
+          <div class="r-info">
+            <span class="badge ok">Disponible</span>
+            <h3 class="r-title">MTG: Universes Beyond | Final Fantasy — Bundle</h3>
+            <div class="r-price">
+              <span class="price-old">$ 320.000,00</span>
+              <span class="price">$ 300.000 COP</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- 4 -->
+        <a class="release-card"
+           href="html/tienda.html?q=Final%20Fantasy&cat=TCG%20%2F%20Cartas#product-grid"
+           aria-label="MTG Final Fantasy — Starter Kit">
+          <div class="r-media">
+            <img src="images/lanzamiento/img.4.jpg" alt="MTG Final Fantasy — Starter Kit">
+          </div>
+          <div class="r-info">
+            <span class="badge out">Agotado</span>
+            <h3 class="r-title">MTG: Universes Beyond | Final Fantasy — Starter Kit</h3>
+            <div class="r-price">
+              <span class="price">$ 120.000 COP</span>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Botón VER TODO centrado -->
+      <div class="mt-4" style="display:flex;justify-content:center">
+        <a class="btn"
+           href="html/tienda.html?q=Final%20Fantasy&cat=TCG%20%2F%20Cartas#product-grid">
+          Ver todo
+        </a>
+      </div>
+    </section>
+
+    <!-- VIDEO 2 · Pokémon -->
+    <section class="container mt-6">
+      <h2>Una aventura siempre es mejor acompañados!</h2>
+      <div class="video-wrapper mt-3">
+        <a class="yt-btn"
+           href="https://www.youtube.com/watch?v=GmE3uICi9oo"
+           target="_blank" rel="noopener">
+          Mirar en YouTube
+        </a>
+        <iframe
+          src="https://www.youtube.com/embed/GmE3uICi9oo?rel=0"
+          title="Pokémon TCG — Journey Together"
+          loading="lazy"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen></iframe>
+      </div>
+    </section>
+
+    <!-- LANZAMIENTO · Pokémon (solo Pokémon + botón centrado) -->
+    <section class="container mt-6">
+      <h2 class="h3">Lo que encuentras de este lanzamiento:</h2>
+
+      <div class="release-grid mt-3">
+        <!-- 1 · Elite Trainer Box -->
+        <a class="release-card"
+           href="html/tienda.html?q=Pokemon&cat=TCG%20%2F%20Cartas#product-grid"
+           aria-label="Pokemon TCG | Scarlet & Violet 09 Journey Together | Elite Trainer Box">
+          <div class="r-media">
+            <img src="images/coleccion destacada/img.5.jpg"
+                 alt="Pokemon TCG · Scarlet & Violet 09 Journey Together · Elite Trainer Box"
+                 loading="lazy">
+          </div>
+          <div class="r-info">
+            <span class="badge out">Agotado</span>
+            <h3 class="r-title">Pokemon TCG | Scarlet &amp; Violet 09 Journey Together | Elite Trainer Box</h3>
+            <div class="r-price">
+              <span class="price">$ 250.000,00 COP</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- 2 · Lillie Premium Tournament Collection -->
+        <a class="release-card"
+           href="html/tienda.html?q=Pokemon&cat=TCG%20%2F%20Cartas#product-grid"
+           aria-label="Pokemon TCG | Lillie Premium Tournament Collection">
+          <div class="r-media">
+            <img src="images/coleccion destacada/img.6.jpg"
+                 alt="Pokemon TCG · Lillie Premium Tournament Collection"
+                 loading="lazy">
+          </div>
+          <div class="r-info">
+            <span class="badge ok">Disponible</span>
+            <h3 class="r-title">Pokemon TCG | Lillie Premium Tournament Collection</h3>
+            <div class="r-price">
+              <span class="price-old">$ 175.000,00 COP</span>
+              <span class="price">$ 160.000,00 COP</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- 3 · Booster Bundle -->
+        <a class="release-card"
+           href="html/tienda.html?q=Pokemon&cat=TCG%20%2F%20Cartas#product-grid"
+           aria-label="Pokemon TCG | Scarlet & Violet 09 Journey Together | Booster Bundle">
+          <div class="r-media">
+            <img src="images/coleccion destacada/img.7.jpg"
+                 alt="Pokemon TCG · Scarlet & Violet 09 Journey Together · Booster Bundle"
+                 loading="lazy">
+          </div>
+          <div class="r-info">
+            <span class="badge out">Agotado</span>
+            <h3 class="r-title">Pokemon TCG | Scarlet &amp; Violet 09 Journey Together | Booster Bundle</h3>
+            <div class="r-price">
+              <span class="price">$ 120.000,00 COP</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- 4 · Charizard ex Special Collection -->
+        <a class="release-card"
+           href="html/tienda.html?q=Pokemon&cat=TCG%20%2F%20Cartas#product-grid"
+           aria-label="Pokémon TCG | Charizard ex Special Collection">
+          <div class="r-media">
+            <img src="images/coleccion destacada/img.8.jpg"
+                 alt="Pokémon TCG · Charizard ex Special Collection"
+                 loading="lazy">
+          </div>
+          <div class="r-info">
+            <span class="badge ok">Disponible</span>
+            <h3 class="r-title">Pokémon TCG | Charizard ex Special Collection</h3>
+            <div class="r-price">
+              <span class="price">$ 180.000,00 COP</span>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Botón VER TODO centrado -->
+      <div class="mt-4" style="display:flex;justify-content:center">
+        <a class="btn btn-primary" href="html/pokemon.html">Ver todo</a>
+      </div>
+    </section>
+
+    <!-- DESTACADO · Top Deck Juegos Coleccionables -->
+<section class="container mt-6">
+  <div class="card-like" style="background:#fff;border:1px solid rgba(0,0,0,.06);border-radius:20px;padding:24px 20px;box-shadow:0 12px 30px rgba(0,0,0,.06);">
+    <h2 class="h2 m-0">Top Deck Juegos Coleccionables</h2>
+    <p class="m-0" style="color:#475569;margin-top:6px">
+      Somos una empresa que busca la integración cultural de los juegos coleccionables:
+      Yu-Gi-Oh!, Magic: The Gathering, Pokémon, Digimon Card Game y Dragon Ball.
+    </p>
+    <div class="mt-4" style="display:flex;justify-content:center">
+      <a class="btn" href="html/blog.html#topdeck">
+        Entrada de Blog: ¿qué es Top Deck?
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- GOOGLE REVIEW -->
+<section class="container mt-6" id="google-reviews">
+  <h2 class="h2">Google Review</h2>
+
+  <div class="review-grid">
+    <!-- 1 -->
+    <article class="review-card">
+      <h3 class="review-name">David Arturo Ruiz Chanchi</h3>
+      <p class="review-text">
+        Excelente atención y muy buen surtido. El ambiente es perfecto para pasar el rato,
+        jugar y conseguir productos coleccionables a buen precio. ¡Recomendado!
+      </p>
+      <div class="review-stars" aria-label="5 estrellas">★★★★★</div>
+    </article>
+
+    <!-- 2 -->
+    <article class="review-card">
+      <h3 class="review-name">EIDER ALEXIS CAMACHO PALACIOS</h3>
+      <p class="review-text">
+        La experiencia fue muy agradable. Buen servicio, asesoría clara y variedad de
+        productos. Volveré por más accesorios y cartas.
+      </p>
+      <div class="review-stars" aria-label="5 estrellas">★★★★★</div>
+    </article>
+
+    <!-- 3 -->
+    <article class="review-card">
+      <h3 class="review-name">Miguel Ángel Fernández</h3>
+      <p class="review-text">
+        Lugar confiable con un gran catálogo. La atención del personal marca la diferencia
+        y los envíos llegan rápidos. Totalmente recomendado.
+      </p>
+      <div class="review-stars" aria-label="5 estrellas">★★★★★</div>
+    </article>
+  </div>
+</section>
+
+ 
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container grid">
+      <section>
+        <h4>MagicColombia</h4>
+        <p>Desde 2002 con la comunidad TCG.</p>
+        <small>© 2025 MagicColombia. Todos los derechos reservados.</small>
+      </section>
+      <section>
+        <h4>Links Rápidos</h4>
+        <ul>
+          <li><a href="html/search.html">Búsqueda</a></li>
+          <li><a href="html/terminos.html">Términos del servicio</a></li>
+          <li><a href="html/reembolsos.html">Política de reembolso</a></li>
+        </ul>
+      </section>
+      <section>
+        <h4>Sobre Nosotros</h4>
+        <p>Carrera 65 # 5-107 · Cali · Colombia</p>
+        <p>E-mail: <a href="mailto:ventas@magiccolombia.com">ventas@magiccolombia.com</a></p>
+        <p>WhatsApp/Celular 3045511764</p>
+      </section>
+    </div>
+  </footer>
+
+  <!-- JS (orden habitual del proyecto) -->
+  <script src="js/jquery.min.js" defer></script>
+  <script src="js/bootstrap.js" defer></script>
+  <script src="js/hero.carousel.js" defer></script>
+  <script src="js/main.magiccolombia.js" defer></script>
+</body>
+</html>

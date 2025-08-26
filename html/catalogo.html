@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="es-CO">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Catálogo – MagicColombia</title>
+
+  <!-- Esta página está en /html -->
+  <link rel="stylesheet" href="../css/style.magiccolombia.css">
+  <link rel="icon" type="image/png" href="../images/Logo/01.png">
+</head>
+
+<body class="theme-light page-catalog">
+  <!-- Preloader -->
+  <div id="preloader" role="status" aria-live="polite" aria-label="Cargando">
+    <div class="spinner" aria-hidden="true"></div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="nav">
+      <div class="nav-left">
+        <a class="brand" href="../index.html" aria-label="MagicColombia">
+          <img src="../images/Logo/01.png" alt="MagicColombia">
+        </a>
+
+        <!-- Menú principal (iconos) -->
+        <nav id="primary-menu" class="menu menu-icons" aria-label="Navegación principal">
+          <a href="catalogo.html" class="icon-link" title="Catálogo" aria-label="Catálogo" aria-current="page">
+            <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/>
+              <rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/>
+            </svg>
+            <span class="sr-only">Catálogo</span>
+          </a>
+
+          <a href="blog.html" class="icon-link" title="Post" aria-label="Post">
+            <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <rect x="3" y="4" width="18" height="16" rx="2"/>
+              <line x1="7" y1="8" x2="17" y2="8"/>
+              <line x1="7" y1="12" x2="17" y2="12"/>
+              <line x1="7" y1="16" x2="12" y2="16"/>
+            </svg>
+            <span class="sr-only">Post</span>
+          </a>
+        </nav>
+      </div>
+
+      <div class="auth-ctas">
+        <a class="btn-outline" href="login.html">Iniciar sesión</a>
+        <a class="btn" href="account.html">Registrar</a>
+      </div>
+
+      <button class="burger" type="button"
+              data-menu-toggle aria-label="Abrir menú"
+              aria-controls="primary-menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Héroe carrito -->
+    <section id="cart-hero" class="container" aria-label="Estado del carrito">
+      <div class="card cart-hero-card">
+        <h2 class="m-0">Tu carrito está vacío</h2>
+        <p class="m-0 small">Sigue explorando y agrega productos para verlos aquí.</p>
+        <div style="margin-top:.8rem">
+          <a class="btn" id="btn-keep-shopping" href="#grid">Seguir comprando</a>
+          <a class="btn btn-outline" href="login.html">Inicia sesión</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Colección destacada -->
+    <section id="featured-collection" class="pad-y">
+      <div class="container">
+        <h2 class="h3">Colección destacada</h2>
+
+        <ul class="fc-grid" id="grid">
+          <li>
+            <a class="fc-card" href="tienda.html">
+              <img src="../images/coleccion destacada/img.1.jpg" alt="Binder Collection | Black Bolt & White Flare" loading="lazy">
+              <div class="fc-info">
+                <h3 class="fc-title">Binder Collection | Black Bolt &amp; White Flare</h3>
+                <span class="fc-price">$ 160.000 <span class="cur">COP</span></span>
+              </div>
+            </a>
+          </li>
+
+          <li>
+            <a class="fc-card" href="tienda.html">
+              <img src="../images/coleccion destacada/img.2.jpg" alt="Aqualin" loading="lazy">
+              <div class="fc-info">
+                <h3 class="fc-title">Aqualin</h3>
+                <span class="fc-price">$ 129.000 <span class="cur">COP</span></span>
+              </div>
+            </a>
+          </li>
+
+          <li>
+            <a class="fc-card" href="tienda.html">
+              <img src="../images/coleccion destacada/img.3.jpg" alt="Booster Box - ULTRA LIMIT - [FB04]" loading="lazy">
+              <div class="fc-info">
+                <h3 class="fc-title">Booster Box - ULTRA LIMIT - [FB04]</h3>
+                <span class="fc-price">$ 450.000 <span class="cur">COP</span></span>
+              </div>
+            </a>
+          </li>
+
+          <li>
+            <a class="fc-card" href="tienda.html">
+              <img src="../images/coleccion destacada/img.4.jpg" alt="Booster Box Cyber Eden Digimon" loading="lazy">
+              <div class="fc-info">
+                <h3 class="fc-title">Booster Box Cyber Eden Digimon</h3>
+                <span class="fc-price">$ 500.000 <span class="cur">COP</span></span>
+              </div>
+            </a>
+          </li>
+        </ul>
+
+        <div class="view-all-wrap">
+          <a class="btn" href="tienda.html">Ver todo</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container grid">
+      <section>
+        <h4>MagicColombia</h4>
+        <p>Desde 2002 con la comunidad TCG.</p>
+        <small>© 2025 MagicColombia. Todos los derechos reservados.</small>
+      </section>
+
+      <section>
+        <h4>Links Rápidos</h4>
+        <ul>
+          <li><a href="html/search.html">Búsqueda</a></li>
+          <li><a href="html/terminos.html">Términos del servicio</a></li>
+          <li><a href="html/reembolsos.html">Política de reembolso</a></li>
+        </ul>
+      </section>
+
+      <section>
+        <h4>Sobre Nosotros</h4>
+        <p>Carrera 65 # 5-107 · Cali · Colombia</p>
+        <p>E-mail: <a href="mailto:ventas@magiccolombia.com">ventas@magiccolombia.com</a></p>
+        <p>WhatsApp/Celular 3045511764</p>
+      </section>
+    </div>
+  </footer>
+
+  <!-- JS -->
+  <script src="../js/main.magiccolombia.js" defer></script>
+  <script src="../js/catalogo.js" defer></script>
+</body>
+</html>

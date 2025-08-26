@@ -1,0 +1,67 @@
+/* Bootstrap 3 – Parche MagicColombia (cargar DESPUÉS de bootstrap.css)
+   Objetivo: mejorar accesibilidad, foco, formularios, carrusel y coherencia visual.
+   Seguro para updates (no toca el core) */
+
+/* 1) Glyphicons: no bloquear renderizado de texto */
+@font-face {
+  font-family: 'Glyphicons Halflings';
+  src: url('../fonts/glyphicons-halflings-regular.eot');
+  src: url('../fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/glyphicons-halflings-regular.woff2') format('woff2'),
+       url('../fonts/glyphicons-halflings-regular.woff') format('woff'),
+       url('../fonts/glyphicons-halflings-regular.ttf') format('truetype'),
+       url('../fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+  font-display: swap; /* ← mejora CLS/FOIT */
+}
+
+/* 2) Enlaces y accesibilidad: foco visible (WCAG 2.1) */
+a:focus, button:focus, [role="button"]:focus, .btn:focus, .form-control:focus {
+  outline: 2px solid #0a7; outline-offset: 2px;
+}
+
+/* 3) Formularios: foco más claro y consistente */
+.form-control:focus {
+  border-color: #0a7;
+  box-shadow: 0 0 0 3px rgba(0, 170, 119, .25);
+}
+
+/* 4) Navbar: estilo limpio y legible */
+.navbar { border: none; box-shadow: 0 2px 8px rgba(0,0,0,.06); }
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus { color: #0a7; }
+
+/* 5) Botón primario con color de marca */
+.btn-primary {
+  background-color: #0a7; border-color: #0a7;
+}
+.btn-primary:hover, .btn-primary:focus {
+  background-color: #086; border-color: #086;
+}
+
+/* 6) Carrusel: controles visibles y captions legibles */
+.carousel .item img { width: 100%; height: auto; }
+.carousel-control { opacity: .85; }
+.carousel-control:focus { opacity: 1; }
+.carousel-caption {
+  background: rgba(0,0,0,.55);
+  border-radius: .5rem;
+  padding: 1rem 1.25rem;
+}
+
+/* 7) Dropdowns y modales: mayor contraste y profundidad */
+.dropdown-menu { box-shadow: 0 10px 24px rgba(0,0,0,.12); }
+.modal-backdrop { opacity: .6; }
+
+/* 8) Ayuda para “skip to content” usando clases Bootstrap */
+.sr-only.sr-only-focusable:active,
+.sr-only.sr-only-focusable:focus {
+  position: static; width: auto; height: auto; margin: 0;
+  overflow: visible; clip: auto;
+}
+
+/* 9) Tablas y listas: un poquito de aire */
+.table > thead > tr > th { border-bottom-width: 2px; }
+.list-group-item { padding: 12px 16px; }
+
+/* 10) Helpers por si faltan */
+img { image-rendering: auto; }

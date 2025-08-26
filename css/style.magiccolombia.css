@@ -1,0 +1,1151 @@
+/* =========================
+   MagicColombia — CSS final
+   ========================= */
+
+/* ==== Reset corto / base ==== */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font: 400 16px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  color: #0f172a;
+  background: #f6f7fb;           /* sitio claro */
+}
+img { max-width: 100%; height: auto; display: block; }
+figure { margin: 0; }
+a { color: inherit; text-decoration: none; }
+
+/* ==== Helpers ==== */
+.container { max-width: 1200px; margin-inline: auto; padding-inline: 24px; }
+.mt-3 { margin-top: 1rem; }
+.mt-4 { margin-top: 1.5rem; }
+.mt-6 { margin-top: 2rem; }
+
+/* =========================
+   HEADER (negro) + MENÚ
+   ========================= */
+.site-header{
+  position: sticky; top: 0; z-index: 1000;
+  background: #0b0c10;
+  box-shadow: 0 1px 0 #151621 inset;
+}
+.site-header .nav{
+  height: 64px;
+  display:flex; align-items:center; gap:16px; justify-content:space-between;
+  padding-inline: 12px;
+}
+.site-header .nav-left{ display:flex; align-items:center; gap:14px; }
+.site-header .brand img{ height:38px; display:block; }
+
+/* Menú icónico (a la izquierda) */
+.menu.menu-icons{ display:flex; gap:10px; }
+.menu.menu-icons .icon-link{
+  width:36px; height:36px; border-radius:9999px;
+  display:inline-flex; align-items:center; justify-content:center;
+  color:#e9eef8; background:transparent;
+  border:1px solid #2c2f3a; transition:.2s;
+}
+.menu.menu-icons .icon-link:hover,
+.menu.menu-icons .icon-link:focus-visible{
+  outline:0; border-color:#7c3aed; box-shadow:0 0 0 2px rgba(124,58,237,.35) inset;
+  color:#fff;
+}
+
+/* CTA (derecha) */
+.site-header .auth-ctas{ display:flex; gap:10px; margin-left:auto; }
+.site-header .btn, .site-header .btn-outline{
+  --h:40px; height:var(--h); line-height:var(--h);
+  padding:0 16px; border-radius:9999px; font-weight:600; white-space:nowrap;
+}
+.site-header .btn{
+  background:#7c3aed; color:#fff;
+  box-shadow:0 0 0 2px rgba(124,58,237,.35) inset, 0 8px 22px rgba(124,58,237,.25);
+}
+.site-header .btn:hover{ filter:brightness(1.05); }
+.site-header .btn-outline{
+  background:transparent; color:#e9eef8; border:1px solid #2c2f3a;
+}
+.site-header .btn-outline:hover{ border-color:#a78bfa; color:#fff; }
+
+/* Burger opcional */
+.burger{ display:none; background:none; border:0; padding:10px; }
+.burger span{ display:block; width:22px; height:2px; background:#e9eef8; margin:4px 0; }
+
+@media (max-width:720px){
+  .site-header .auth-ctas{ display:none; }
+}
+
+/* =========================
+   HERO / CARRUSEL
+   ========================= */
+.hero-carousel{
+  position:relative; border-radius:22px; overflow:hidden;
+  background:#0b0c10; box-shadow:0 16px 40px rgba(2,6,23,.25);
+}
+.hero-carousel .carousel-track{ display:flex; transition:transform .45s ease; }
+.hero-carousel .slide{
+  position:relative; min-width:100%; aspect-ratio:16/7.5;
+  display:grid; place-items:center; background:#0b0c10;
+}
+.hero-carousel .slide img{
+  width:100%; height:100%; object-fit:cover; object-position:center;
+}
+/* capa de contraste */
+.hero-carousel .slide::after{
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background:
+    radial-gradient(120% 60% at 0% 100%, rgba(0,0,0,.36) 0%, transparent 55%),
+    linear-gradient(0deg, rgba(0,0,0,.28), transparent 30%);
+}
+/* callout legible (abajo-izq) */
+.hero-carousel .callout{
+  position:absolute; left:24px; bottom:24px;
+  max-width:min(560px, 80%);
+  padding:22px;
+  color:#fff;
+  background: linear-gradient(to right, rgba(8,10,16,.92) 0%, rgba(8,10,16,.78) 52%, rgba(8,10,16,0) 100%);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:18px;
+  box-shadow:0 10px 28px rgba(0,0,0,.35);
+  backdrop-filter: blur(1.5px);
+}
+.hero-carousel .callout h1,
+.hero-carousel .callout h2{ margin:0 0 .35rem; font-size:clamp(1.35rem, 2vw + .8rem, 2.25rem); }
+.hero-carousel .callout p{ margin:0 0 .8rem; opacity:.95; }
+.hero-carousel .callout .btn{
+  display:inline-block; background:#7c3aed; color:#fff;
+  padding:.6rem 1.05rem; border-radius:9999px; font-weight:700;
+  box-shadow:0 0 0 2px rgba(124,58,237,.35) inset, 0 8px 22px rgba(124,58,237,.28);
+}
+
+/* flechas */
+.hero-carousel .ctrl{
+  position:absolute; top:50%; transform:translateY(-50%);
+  width:48px; height:48px; border-radius:9999px;
+  border:1px solid rgba(255,255,255,.35); color:#fff;
+  background:rgba(0,0,0,.35); backdrop-filter:blur(4px);
+  display:grid; place-items:center; cursor:pointer; transition:.2s;
+}
+.hero-carousel .ctrl:hover{ background:rgba(0,0,0,.55); }
+.hero-carousel .prev{ left:18px; }
+.hero-carousel .next{ right:18px; }
+
+/* dots */
+.hero-carousel .dots{
+  position:absolute; left:0; right:0; bottom:12px;
+  display:flex; gap:8px; justify-content:center; align-items:center;
+}
+.hero-carousel .dots button{
+  width:9px; height:9px; border-radius:9999px; border:0; padding:0;
+  background:#cbd5e1; opacity:.85;
+}
+.hero-carousel .dots button.is-active{ background:#7c3aed; opacity:1; }
+
+@media (max-width:720px){
+  .hero-carousel .callout{ left:16px; right:16px; bottom:16px; max-width:none; }
+}
+
+/* =========================
+   VIDEO responsive (YouTube)
+   ========================= */
+.video-wrapper{
+  position:relative; width:100%; aspect-ratio:16/9;
+  border-radius:16px; overflow:hidden;
+  background:#0b0c10; box-shadow:0 16px 40px rgba(2,6,23,.18);
+}
+.video-wrapper iframe{
+  position:absolute; inset:0; width:100%; height:100%; border:0;
+}
+.video-wrapper .yt-btn{
+  position:absolute; top:14px; left:14px; z-index:2;
+  display:inline-flex; align-items:center; gap:8px;
+  padding:8px 12px; border-radius:9999px; font-weight:600;
+  background:#fff; color:#111827; text-decoration:none;
+  box-shadow:0 4px 16px rgba(2,6,23,.12);
+}
+
+/* =========================
+   TARJETAS / LISTAS
+   ========================= */
+.card{
+  background:#fff; color:#0f172a; border-radius:18px;
+  border:1px solid #e8eaf3;
+  box-shadow:0 8px 22px rgba(15,23,42,.05);
+}
+.card + .card{ margin-top:16px; }
+
+/* =========================
+   FOOTER (negro) — una sola versión
+   ========================= */
+.site-footer{
+  background:#0b0c10; color:#e5e7eb; border-top:1px solid #151621;
+}
+.site-footer .container{ padding-block:40px; }
+.site-footer .grid{
+  display:grid; gap:28px;
+  grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
+}
+.site-footer h4{ color:#fff; margin:0 0 8px; }
+.site-footer p,.site-footer small,.site-footer li{ color:#cbd5e1; }
+.site-footer ul{ list-style:none; padding:0; margin:0; }
+.site-footer a{ color:#e5e7eb; text-decoration:none; }
+.site-footer a:hover{ color:#a78bfa; }
+
+/* =========================
+   UTILIDADES DE BOTÓN (para fuera del header)
+   ========================= */
+.btn{ display:inline-block; background:#7c3aed; color:#fff; padding:.65rem 1.05rem; border-radius:9999px; font-weight:700; }
+.btn:hover{ filter:brightness(1.05); }
+.btn-outline{ display:inline-block; padding:.6rem 1rem; border:1px solid #cbd5e1; border-radius:9999px; color:#0f172a; background:#fff; }
+.btn-outline:hover{ border-color:#7c3aed; color:#7c3aed; }
+
+/* =========================
+   ACCESIBILIDAD
+   ========================= */
+.sr-only{
+  position:absolute !important; width:1px; height:1px; padding:0; margin:-1px;
+  overflow:hidden; clip:rect(0,0,0,0); border:0;
+}
+:focus-visible{ outline:3px solid #a78bfa; outline-offset:2px; }
+
+/* =========================
+   PRELOADER — Spinner 100% CSS (única versión)
+   ========================= */
+#preloader{
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  background: rgba(10,12,16,.55);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  transition: opacity .35s ease, visibility .35s ease;
+}
+#preloader::before{
+  content:""; position:absolute; inset:0;
+  background: radial-gradient(120% 80% at 50% 30%, rgba(0,0,0,.35) 0%, rgba(0,0,0,.12) 50%, transparent 100%);
+  pointer-events:none;
+}
+/* Spinner */
+#preloader .spinner{
+  width: 56px; height: 56px; border-radius: 9999px;
+  -webkit-mask: radial-gradient(circle 8px, transparent 6px, #000 7px);
+          mask: radial-gradient(circle 8px, transparent 6px, #000 7px);
+  background: conic-gradient(from 0deg, #8b5cf6, #22d3ee, #60a5fa, #8b5cf6);
+  animation: preloader-spin 1.05s linear infinite;
+  filter: drop-shadow(0 6px 16px rgba(0,0,0,.35));
+}
+@keyframes preloader-spin { to { transform: rotate(1turn); } }
+/* Ocultar realmente el preloader */
+#preloader.is-hidden,
+body.is-ready #preloader{
+  opacity: 0; visibility: hidden; pointer-events: none;
+}
+/* Ocultar cualquier <img alt="Cargando…"> rezagado */
+img[alt="Cargando…"], img[alt="Cargando..."]{ display:none !important; }
+@media (prefers-reduced-motion: reduce){
+  #preloader .spinner{ animation: none; background: radial-gradient(circle at 50% 50%, #94a3b8 0 8px, transparent 8px), conic-gradient(#94a3b8 0 360deg); }
+}
+
+/* ===== Colección destacada (Catálogo) ===== */
+.featured-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:20px;
+}
+@media (max-width:1024px){ .featured-grid{ grid-template-columns:repeat(2,1fr); } }
+@media (max-width:640px){  .featured-grid{ grid-template-columns:1fr; } }
+
+a.product-card{
+  display:flex; flex-direction:column;
+  background:#ffffff; border-radius:16px; text-decoration:none;
+  box-shadow:0 8px 24px rgba(2,6,23,.08); overflow:hidden;
+  transition:transform .18s ease, box-shadow .18s ease;
+  border:1px solid rgba(2,6,23,.06);
+}
+.theme-dark a.product-card{
+  background:#0f1115; border-color:rgba(255,255,255,.06);
+  box-shadow:0 10px 26px rgba(0,0,0,.35);
+}
+a.product-card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 14px 36px rgba(2,6,23,.16);
+}
+
+.product-card .thumb{
+  aspect-ratio: 4/3; 
+  background:#f8fafc;
+  display:block; overflow:hidden;
+}
+.theme-dark .product-card .thumb{ background:#111318; }
+
+.product-card .thumb img{
+  width:100%; height:100%; object-fit:contain; display:block;
+}
+
+.product-card .content{ padding:14px 16px; display:grid; gap:6px; }
+.product-card h3{ margin:0; font-size:1rem; line-height:1.35; color:inherit; }
+.product-card .chip{ font-size:.8rem; color:#64748b; }
+.theme-dark .product-card .chip{ color:#94a3b8; }
+
+.product-card .price{ font-weight:700; letter-spacing:.2px; }
+.product-card .price .currency{ opacity:.8; font-weight:600; }
+
+/* espaciar título */
+#coleccion-destacada > h2{ margin-bottom:14px; }
+
+
+/* ===== Colección destacada (catálogo) ===== */
+.section-head .h2{ margin-bottom: 1rem; }
+
+.product-grid{
+  --gap: 24px;
+  display:grid;
+  gap:var(--gap);
+  grid-template-columns: repeat(12, 1fr);
+}
+.product-card{
+  grid-column: span 12;
+  display:block;
+  background:#fff;
+  border:1px solid rgba(15,23,42,.06);
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:0 8px 30px rgba(2,6,23,.06);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.product-card:hover{
+  transform: translateY(-2px);
+  box-shadow:0 14px 38px rgba(2,6,23,.10);
+}
+.product-media{
+  position:relative;
+  aspect-ratio: 4 / 3;
+  background:#f3f4f6;
+}
+.product-media img{
+  width:100%; height:100%; object-fit:cover; display:block;
+}
+.badge{
+  position:absolute; left:12px; top:12px;
+  font-size:.75rem; line-height:1; padding:.4rem .55rem;
+  border-radius:999px; color:#fff;
+  box-shadow:0 6px 18px rgba(0,0,0,.15);
+}
+.badge-new{ background:#0ea5e9; }
+.badge-offer{ background:#22c55e; }
+.badge-oos{ background:#64748b; }
+
+.product-info{ padding:16px 18px 18px; }
+.product-title{
+  font-size:1.05rem; font-weight:700; color:#0f172a; margin:0 0 .35rem;
+}
+.product-price{ font-weight:800; color:#0f172a; }
+.product-price .currency{ color:#475569; font-weight:600; margin-left:.25rem; }
+
+.actions-center{ display:flex; justify-content:center; }
+
+/* responsive grid */
+@media (min-width: 768px){
+  .product-card{ grid-column: span 6; }
+}
+@media (min-width: 1200px){
+  .product-card{ grid-column: span 4; }
+}
+
+/* ===== Colección destacada (scope seguro) ===== */
+#featured-collection { --gap: 24px; }
+
+#featured-collection .fc-grid{
+  display:grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: var(--gap);
+  margin-top: 16px;
+  list-style:none;
+  padding:0;
+}
+
+#featured-collection .fc-card{
+  display:block;
+  text-decoration:none;
+  color:inherit;
+  background:#fff;
+  border-radius:16px;
+  overflow:hidden;
+  /* usa tu sombra si tienes variables; si no, cae al fallback */
+  box-shadow: var(--shadow-md, 0 10px 25px rgba(16,24,40,.08));
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+#featured-collection .fc-card:hover{
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg, 0 16px 40px rgba(16,24,40,.12));
+}
+
+#featured-collection img{
+  width:100%;
+  height:220px;               /* ajusta si quieres más alto */
+  object-fit:contain;
+  background:#f6f7fb;         /* base clara para productos recortados */
+}
+
+#featured-collection .fc-info{ padding:14px 16px; }
+#featured-collection .fc-title{ font-size:1rem; line-height:1.3; margin:0 0 6px; }
+#featured-collection .fc-price{ font-weight:600; }
+
+#featured-collection .view-all-wrap{
+  text-align:center;
+  margin-top:28px;
+}
+#featured-collection .view-all-wrap .btn{ display:inline-flex; }
+
+/* separa visualmente el bloque del footer */
+#featured-collection .container{ margin-bottom: 6px; }
+
+/* Centrado del diálogo "Tu carrito está vacío" en catálogo */
+#cart-hero { 
+  display: grid; 
+  place-items: center; 
+  padding: 1rem 0 .25rem;
+}
+
+#cart-hero .cart-hero-card {
+  width: min(880px, 100%);
+  margin: 0 auto;          /* centra en cualquier layout */
+  padding: 22px;           /* igual que antes, pero desde CSS */
+}
+
+/* Opcional: alinear botones en móvil sin romper nada */
+@media (max-width: 480px) {
+  #cart-hero .cart-hero-card div {
+    display: flex;
+    gap: .5rem;
+    flex-wrap: wrap;
+  }
+}
+
+/* === TIENDA (aplica fuera de #featured-collection) === */
+
+/* Grilla genérica para <ul class="fc-grid" id="product-grid"> */
+.fc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 24px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Tarjeta genérica */
+.fc-card{
+  display: block;
+  color: inherit;
+  text-decoration: none;
+  background: #fff;
+  border: 1px solid rgba(15,23,42,.06);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(16,24,40,.08);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.fc-card:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 16px 40px rgba(16,24,40,.12);
+}
+
+/* Imagen con altura fija y sin recortes raros */
+.fc-card img{
+  width: 100%;
+  height: 220px;          /* uniforma todas las miniaturas */
+  object-fit: contain;    /* NO recortar (muestra la caja completa) */
+  background: #f6f7fb;    /* base clara detrás de PNGs recortados */
+  display: block;
+}
+
+/* Info de la tarjeta */
+.fc-info{ padding: 14px 16px; }
+.fc-title{ font-size: 1rem; line-height: 1.3; margin: 0 0 6px; }
+.fc-price{ font-weight: 600; }
+
+/* === LAYOUT: 5 columnas en desktop + alturas adaptables === */
+/* Valor base (móvil) para la altura de miniaturas */
+.page-catalog-all{ --thumb-h: 200px; }
+
+/* 2 columnas en pantallas ≥480px */
+@media (min-width: 480px){
+  .page-catalog-all .fc-grid{
+    grid-template-columns: repeat(2, minmax(0,1fr));
+  }
+}
+
+/* 3 columnas ≥768px */
+@media (min-width: 768px){
+  .page-catalog-all .fc-grid{
+    grid-template-columns: repeat(3, minmax(0,1fr));
+  }
+  .page-catalog-all{ --thumb-h: 210px; }
+}
+
+/* 4 columnas ≥1024px */
+@media (min-width: 1024px){
+  .page-catalog-all .fc-grid{
+    grid-template-columns: repeat(4, minmax(0,1fr));
+  }
+  .page-catalog-all{ --thumb-h: 220px; }
+}
+
+/* 5 columnas ≥1280px (desktop) */
+@media (min-width: 1280px){
+  .page-catalog-all .fc-grid{
+    grid-template-columns: repeat(5, minmax(0,1fr));
+  }
+  /* puedes jugar con 200/220/240 según te guste la densidad */
+  .page-catalog-all{ --thumb-h: 220px; }
+}
+
+/* Si usas pantallas muy grandes y quieres tarjetas un poco más altas */
+@media (min-width: 1536px){
+  .page-catalog-all{ --thumb-h: 240px; }
+}
+
+/* La imagen toma la altura de la variable anterior */
+.page-catalog-all .fc-card img{
+  height: var(--thumb-h);
+  width: 100%;
+  object-fit: contain;   /* muestra el producto completo sin recortes */
+  background: #f6f7fb;
+  display: block;
+}
+
+/* ======= PRESETS DE DENSIDAD (compacto / estándar / amplio) ======= */
+.page-catalog-all{
+  --thumb-h: 220px;   /* altura de miniaturas por defecto (estándar) */
+  --grid-gap: 24px;   /* separación entre tarjetas */
+}
+
+/* Compacto: miniaturas más bajas y menos separación */
+.density-compact.page-catalog-all{
+  --thumb-h: 200px;
+  --grid-gap: 16px;
+}
+
+/* Amplio: miniaturas más altas y más separación */
+.density-roomy.page-catalog-all{
+  --thumb-h: 260px;
+  --grid-gap: 28px;
+}
+
+/* Aplica las variables a la grilla e imágenes */
+.page-catalog-all .fc-grid{ gap: var(--grid-gap); }
+.page-catalog-all .fc-card img{
+  height: var(--thumb-h);
+  width: 100%;
+  object-fit: contain;
+  background: #f6f7fb;
+  display: block;
+}
+
+/* (seguimos con 5 columnas en desktop gracias a los media queries previos) */
+
+/* Segmented toggle (densidad) */
+.segmented{
+  display:inline-flex; gap:4px; padding:4px;
+  background:#fff; border:1px solid rgba(0,0,0,.08);
+  border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,.04);
+}
+.seg-btn{
+  display:inline-flex; align-items:center; justify-content:center;
+  width:40px; height:32px; border:0; background:transparent;
+  border-radius:8px; cursor:pointer; transition:.15s ease;
+}
+.seg-btn:hover{ background:rgba(0,0,0,.04); }
+.seg-btn:focus-visible{ outline:2px solid rgba(109,40,217,.25); outline-offset:2px; }
+.seg-btn.is-active{
+  background:rgba(109,40,217,.12);
+  box-shadow:0 0 0 1px #6d28d9 inset;
+}
+.seg-btn svg{ stroke:currentColor; }
+
+/* Badge sobre la tarjeta */
+.fc-card{ position: relative; } /* sumar a tu regla existente */
+.fc-badge{
+  position:absolute; left:10px; top:10px;
+  padding:4px 10px; font-size:.78rem; border-radius:999px;
+  background:#fff; border:1px solid rgba(0,0,0,.12);
+  box-shadow:0 6px 12px rgba(0,0,0,.06);
+}
+.fc-badge.out{ background:#fff1f2; color:#9f1239; border-color:#f43f5e }
+
+/* Aspecto atenuado para agotados */
+.fc-card.is-out img{ opacity:.6; filter:grayscale(.15); }
+
+/* Switch “Solo disponibles” */
+.switch{ display:inline-flex; align-items:center; gap:8px; user-select:none; }
+.switch input{
+  appearance:none; width:44px; height:24px; border-radius:999px;
+  background:#e5e7eb; border:1px solid rgba(0,0,0,.08);
+  position:relative; outline:none; cursor:pointer; transition:.2s;
+}
+.switch input::after{
+  content:""; position:absolute; left:2px; top:2px; width:18px; height:18px;
+  border-radius:50%; background:#fff; box-shadow:0 1px 2px rgba(0,0,0,.15); transition:.2s;
+}
+.switch input:checked{ background:#6d28d9; }
+.switch input:checked::after{ transform:translateX(20px); }
+.switch label{ color:var(--muted); font-size:.9rem; cursor:pointer; }
+
+/* Espaciamiento del bloque del botón de regreso */
+.back-strip{ margin-top: 20px; margin-bottom: 20px; }
+@media (min-width:1024px){ .back-strip{ margin-top: 28px; margin-bottom: 24px; } }
+
+/* Botón "Volver al catálogo" (morado, como los demás) */
+.btn-back{
+  display:inline-flex; align-items:center; gap:8px;
+  text-decoration:none; border-radius:12px; padding:10px 14px;
+  box-shadow:0 8px 20px rgba(109,40,217,.18);
+}
+.btn-back svg{ width:18px; height:18px; }
+
+/* Asegurar estilos morados también para <a> */
+a.btn-primary{
+  background:#6d28d9; color:#fff; border:1px solid #6d28d9;
+}
+a.btn-primary:hover{ background:#5b21b6; border-color:#5b21b6; }
+a.btn-primary:active{ transform:translateY(1px); }
+a.btn-primary:focus-visible{ outline:2px solid rgba(109,40,217,.28); outline-offset:3px; }
+
+/* ===== Lanzamiento (Home) ===== */
+.release-grid{
+  display:grid;
+  gap:18px;
+  grid-template-columns:repeat(auto-fill, minmax(260px, 1fr));
+}
+.release-card{
+  display:flex; flex-direction:column; text-decoration:none; color:inherit;
+  background:#fff; border:1px solid rgba(0,0,0,.08); border-radius:16px;
+  overflow:hidden; box-shadow:0 12px 30px rgba(0,0,0,.06);
+  transition:transform .12s ease, box-shadow .12s ease;
+}
+.release-card:hover{ transform:translateY(-2px); box-shadow:0 14px 36px rgba(0,0,0,.09); }
+
+.r-media{ aspect-ratio: 16 / 9; background:#f6f7fb; }
+.r-media img{ width:100%; height:100%; object-fit:contain; }
+
+.r-info{ padding:14px; }
+.r-title{ font-size:1rem; line-height:1.35; margin:.4rem 0 .25rem; }
+
+.badge{
+  display:inline-flex; align-items:center; gap:6px;
+  padding:4px 10px; border-radius:999px; font-size:.8rem; margin-bottom:6px;
+  border:1px solid transparent;
+}
+.badge.ok{ background:#ecfdf5; color:#065f46; border-color:#10b981; }
+.badge.out{ background:#fff1f2; color:#9f1239; border-color:#f43f5e; }
+
+.r-price{ display:flex; gap:8px; align-items:baseline; margin-top:6px; }
+.price-old{ color:#9ca3af; text-decoration:line-through; }
+.price{ font-weight:700; }
+
+@media (min-width: 1100px){
+  .release-grid{ gap:22px; }
+}
+
+/* ====== Filtros “pro” ====== */
+.filters-card{
+  background:#fff; border:1px solid #e8e8ef; border-radius:20px;
+  padding:14px 16px; box-shadow:0 6px 24px -10px rgba(16,24,40,.12);
+}
+.filters-row{display:flex; align-items:center; gap:12px; margin-top:8px}
+.filters-row:first-child{margin-top:0}
+.filters-row.wrap{flex-wrap:wrap}
+.field{display:flex; align-items:center}
+.field.grow{flex:1 1 320px}
+.input.pill, .select.pill{
+  height:44px; padding:0 14px; border:1px solid #e5e7eb; background:#f7f7fb;
+  border-radius:999px; outline:0; font:inherit;
+}
+.input.pill.sm{height:38px}
+.select.pill{appearance:none; background-image:linear-gradient(45deg,transparent 50%,#666 50%),
+             linear-gradient(135deg,#666 50%,transparent 50%), linear-gradient(to right,transparent,transparent);
+  background-position:calc(100% - 18px) 50%, calc(100% - 12px) 50%, 0 0;
+  background-size:6px 6px, 6px 6px, 100% 100%; background-repeat:no-repeat; padding-right:34px;
+}
+.with-icon{position:relative}
+.with-icon .icon{position:absolute; left:14px; top:50%; transform:translateY(-50%); opacity:.55}
+.with-icon .input{padding-left:40px}
+
+.view-group{display:flex; align-items:center; gap:6px; margin-left:2px}
+.icon-pill{
+  display:inline-flex; align-items:center; justify-content:center; width:42px; height:42px;
+  border-radius:999px; border:1px solid #e5e7eb; background:#f7f7fb; color:#111;
+}
+.icon-pill:is(:hover,:focus-visible){border-color:#c7c9d1; background:#fff}
+.icon-pill.is-active{border-color:#7c3aed33; box-shadow:0 0 0 3px #7c3aed22; background:#fff}
+
+.switch{display:flex; align-items:center; gap:8px; cursor:pointer; user-select:none}
+.switch input{display:none}
+.switch span{
+  width:42px; height:24px; background:#e6e6ef; border-radius:999px; position:relative; transition:.2s all ease;
+}
+.switch span::after{
+  content:""; position:absolute; top:3px; left:3px; width:18px; height:18px; background:#fff; border-radius:50%;
+  box-shadow:0 1px 2px rgba(0,0,0,.15); transition:.2s all ease;
+}
+.switch input:checked + span{background:#7c3aed}
+.switch input:checked + span::after{transform:translateX(18px)}
+.switch em{font-style:normal; color:#475569; font-size:.95rem}
+
+.count.small{margin-left:auto; color:#475569}
+.link-clean{
+  background:transparent; border:0; color:#6b46ff; font-weight:600; padding:8px 10px; border-radius:12px; cursor:pointer;
+}
+.link-clean:hover{background:#f4f0ff}
+
+.chips{display:flex; align-items:center; gap:8px; flex-wrap:wrap}
+.chip{
+  height:36px; padding:0 12px; border-radius:999px; border:1px solid #e5e7eb; background:#f7f7fb;
+  display:inline-flex; align-items:center; gap:8px; font-weight:600; color:#111;
+}
+.chip .dot{width:8px; height:8px; border-radius:50%}
+.chip.is-active{border-color:#7c3aed33; background:#fff; box-shadow:0 0 0 3px #7c3aed22}
+
+/* inputs de precio */
+.dash{opacity:.6}
+.price-range .input{min-width:140px}
+
+/* Resp. */
+@media (max-width: 860px){
+  .count.small{order:3; width:100%; margin-left:0}
+  .link-clean{order:4}
+}
+
+/* ===== Catálogo: separación y tamaños consistentes ===== */
+.catalog-toolbar {
+  margin-bottom: 24px;            /* separa el primer renglón de cards */
+}
+
+/* Si usas otro nombre para el contenedor del grid, ajusta el selector */
+.catalog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 24px;
+}
+
+/* Cards e imágenes con altura consistente */
+.product-card .card-media,
+.product-card img {
+  width: 100%;
+  aspect-ratio: 4 / 3;            /* mantiene proporción y evita “posters” gigantes */
+  object-fit: contain;             /* no recorta; encaja */
+  max-height: 220px;               /* altura razonable de vitrina */
+}
+
+@media (min-width: 1280px) {
+  .product-card img { max-height: 240px; }
+}
+
+/* Pastillas (chips) de filtros, por si no estaban estilizadas aún */
+.filter-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .5rem .875rem;
+  border-radius: 999px;
+  background: var(--surface-2, #f4f6fb);
+  border: 1px solid rgba(0,0,0,.06);
+  font-weight: 600;
+}
+.filter-chip.is-active {
+  outline: 3px solid rgba(128, 90, 213, .25); /* morado */
+  background: rgba(128, 90, 213, .10);
+}
+
+/* Inputs de precio (cuando están en la toolbar) */
+.price-input {
+  min-width: 160px;
+  height: 40px;
+  border-radius: 12px;
+  padding: 0 .75rem;
+}
+
+.pagination{
+  display:flex; justify-content:center; gap:14px;
+  margin:24px auto 56px; flex-wrap:wrap;
+}
+.pagination .page{ text-decoration:none; }
+.pagination .page.is-active[aria-current="page"]{ border-bottom:2px solid currentColor; }
+.pagination .page.is-disabled{ opacity:.4; pointer-events:none; }
+
+/* ===== Colección: Pokémon ===== */
+.page-collection .hero-collection{
+  display:grid;
+  grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);
+  gap:24px;
+  align-items:center;
+  padding:24px;
+  margin:12px 0 28px;
+  border-radius:16px;
+  background:linear-gradient(180deg,#f6f7fb 0%, #ffffff 100%);
+  box-shadow: 0 8px 24px rgba(16,24,40,.06);
+}
+.page-collection .hero-media img{
+  width:100%; height:auto; display:block; border-radius:16px;
+}
+.page-collection .hero-title{
+  font-size:clamp(28px,4vw,48px);
+  line-height:1.1; margin:0 0 10px; font-weight:800; letter-spacing:-.01em;
+}
+.page-collection .hero-sub{
+  font-size:clamp(14px,1.6vw,18px);
+  color:var(--muted,#6b7280); margin:0 0 16px;
+}
+
+/* Centrar y espaciar paginación sin romper estilos existentes */
+.pagination{
+  display:flex; justify-content:center; gap:14px;
+  margin:24px auto 56px; flex-wrap:wrap;
+}
+.pagination .page.is-active[aria-current="page"]{ border-bottom:2px solid currentColor; }
+.pagination .page.is-disabled{ opacity:.45; pointer-events:none; }
+
+@media (max-width: 900px){
+  .page-collection .hero-collection{ grid-template-columns:1fr; }
+  .page-collection .hero-media{ order:-1; }
+}
+
+/* ---- Ajustes colección Pokémon ---- */
+.page-collection .hero-collection{ margin-bottom:24px; }
+.page-collection #product-grid{ margin-top:12px; }
+
+/* Garantiza que las imágenes de las tarjetas tengan alto consistente */
+.fc-card img{
+  width:100%;
+  height: var(--thumb-h, 220px);
+  object-fit: cover;
+  display:block;
+  background:#f3f4f6; /* evita ver el texto si no carga aún */
+}
+
+/* Misma escala/espesor para todos los iconos del header */
+.menu .icon-link svg{
+  width:22px; height:22px; stroke-width:2; opacity:.75; transition:opacity .15s ease;
+}
+.menu .icon-link:hover svg{ opacity:1; }
+
+/* Pills */
+.pkm-toolbar{
+  display:flex; justify-content:space-between; align-items:center;
+  gap:16px; margin:16px 0;
+}
+.pkm-toolbar .left, .pkm-toolbar .right{ display:flex; align-items:center; gap:12px; flex-wrap:wrap;}
+.pkm-pill{
+  background: #fff; border:1px solid rgba(0,0,0,.08);
+  padding:6px 10px; border-radius:999px; font-weight:600;
+  box-shadow:0 1px 3px rgba(0,0,0,.06);
+}
+.pkm-pill:hover{ background:#fafafa; }
+.muted{ color:rgba(0,0,0,.55); font-weight:600; }
+
+/* Flyouts */
+.pkm-flyout{
+  position:absolute; margin-top:8px; z-index:50;
+  background:#fff; border:1px solid rgba(0,0,0,.08); border-radius:12px;
+  box-shadow:0 10px 30px rgba(0,0,0,.12);
+  padding:6px; display:flex; flex-direction:column; gap:4px;
+}
+.pkm-flyout button{
+  text-align:left; padding:8px 10px; border-radius:8px; font-weight:600;
+}
+.pkm-flyout button:hover{ background:#f5f5f7; }
+
+/* Alineación de menus bajo sus botones */
+#btn-price{ position:relative; }
+#menu-price{ left:0; }
+#btn-lang{ position:relative; }
+#menu-lang{ left:0; }
+#btn-sort{ position:relative; }
+#menu-sort{ right:0; }
+
+/* === Ajuste de flyouts para filtros/orden === */
+.pkm-wrap { position: relative; display: inline-block; }
+.pkm-flyout { position: absolute; top: calc(100% + 8px); left: 0; z-index: 40; }
+
+/* ====== Pokémon: Grid + Cards (parche específico) ====== */
+.pkm-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 24px;
+  margin: 16px 0 48px;
+}
+
+.card.card-product{
+  background:#fff;
+  border:1px solid rgba(15,23,42,.06);
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:0 8px 24px rgba(15,23,42,.06);
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+.card.card-product:hover{
+  transform: translateY(-2px);
+  box-shadow:0 14px 36px rgba(15,23,42,.10);
+}
+
+/* Imagen consistente (sin recortes feos ni “posters” XXL) */
+.card-product .card-media{
+  position:relative;
+  aspect-ratio: 4 / 3;      /* miniatura uniforme */
+  background:#f6f7fb;
+}
+.card-product .card-media img{
+  width:100%;
+  height:100%;
+  object-fit: contain;      /* muestra el producto completo */
+  display:block;
+}
+
+/* Badge “Agotado” */
+.card-product .badge-out{
+  position:absolute; left:12px; top:12px;
+  padding:.4rem .6rem; font-size:.78rem; line-height:1;
+  border-radius:999px; color:#9f1239; background:#fff1f2;
+  border:1px solid #fda4af; box-shadow:0 6px 14px rgba(0,0,0,.08);
+}
+
+/* Contenido */
+.card-product .card-body{ padding:14px 16px 16px; }
+.card-product .card-title{ margin:0 0 .35rem; font-weight:800; font-size:1.05rem; }
+.card-product .card-title a{ color:inherit; text-decoration:none; }
+.card-product .card-title a:hover{ text-decoration:underline; }
+.price-row{ display:flex; gap:8px; align-items:baseline; }
+.price-old{ color:#9ca3af; text-decoration: line-through; }
+.price-now{ font-weight:800; color:#0f172a; }
+
+/* Toolbar de filtros (por si no estaba) */
+.pkm-toolbar{ display:flex; justify-content:space-between; align-items:center; gap:16px; margin:16px 0; }
+.pkm-toolbar .left, .pkm-toolbar .right{ display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
+.pkm-pill{ background:#fff; border:1px solid rgba(0,0,0,.08); padding:6px 10px; border-radius:999px; font-weight:600; box-shadow:0 1px 3px rgba(0,0,0,.06); }
+.pkm-wrap{ position:relative; display:inline-block; }
+.pkm-flyout{ position:absolute; top:calc(100% + 8px); left:0; z-index:40; background:#fff; border:1px solid rgba(0,0,0,.08); border-radius:12px; box-shadow:0 10px 30px rgba(0,0,0,.12); padding:6px; display:flex; flex-direction:column; gap:4px; }
+.pkm-flyout button{ text-align:left; padding:8px 10px; border-radius:8px; font-weight:600; }
+.pkm-flyout button:hover{ background:#f5f5f7; }
+
+/* ====== Pokémon: Grid + Cards (parche específico) ====== */
+.pkm-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+  gap:24px;
+  margin:16px 0 48px;
+}
+.card.card-product{
+  background:#fff;border:1px solid rgba(15,23,42,.06);border-radius:20px;overflow:hidden;
+  box-shadow:0 8px 24px rgba(15,23,42,.06);transition:transform .18s ease, box-shadow .18s ease;
+}
+.card.card-product:hover{transform:translateY(-2px);box-shadow:0 14px 36px rgba(15,23,42,.10);}
+.card-product .card-media{position:relative;aspect-ratio:4/3;background:#f6f7fb;}
+.card-product .card-media img{width:100%;height:100%;object-fit:contain;display:block;}
+.card-product .badge-out{
+  position:absolute;left:12px;top:12px;padding:.4rem .6rem;font-size:.78rem;line-height:1;
+  border-radius:999px;color:#9f1239;background:#fff1f2;border:1px solid #fda4af;box-shadow:0 6px 14px rgba(0,0,0,.08);
+}
+.card-product .card-body{padding:14px 16px 16px;}
+.card-product .card-title{margin:0 0 .35rem;font-weight:800;font-size:1.05rem;}
+.card-product .card-title a{color:inherit;text-decoration:none;}
+.card-product .card-title a:hover{text-decoration:underline;}
+.price-row{display:flex;gap:8px;align-items:baseline;}
+.price-old{color:#9ca3af;text-decoration:line-through;}
+.price-now{font-weight:800;color:#0f172a;}
+.pkm-toolbar{display:flex;justify-content:space-between;align-items:center;gap:16px;margin:16px 0;}
+.pkm-toolbar .left,.pkm-toolbar .right{display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+.pkm-pill{background:#fff;border:1px solid rgba(0,0,0,.08);padding:6px 10px;border-radius:999px;font-weight:600;box-shadow:0 1px 3px rgba(0,0,0,.06);}
+.pkm-wrap{position:relative;display:inline-block;}
+.pkm-flyout{position:absolute;top:calc(100% + 8px);left:0;z-index:40;background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,.12);padding:6px;display:flex;flex-direction:column;gap:4px;}
+.pkm-flyout button{text-align:left;padding:8px 10px;border-radius:8px;font-weight:600;}
+.pkm-flyout button:hover{background:#f5f5f7;}
+
+/* ======= PATCH SEGURO — Página Pokémon ======= */
+
+/* Grid y cards solo aquí */
+.page-pokemon .pkm-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+  gap:24px;
+  margin:16px 0 48px;
+}
+.page-pokemon .card.card-product{
+  background:#fff;border:1px solid rgba(15,23,42,.06);border-radius:20px;overflow:hidden;
+  box-shadow:0 8px 24px rgba(15,23,42,.06);transition:transform .18s ease, box-shadow .18s ease;
+}
+.page-pokemon .card.card-product:hover{transform:translateY(-2px);box-shadow:0 14px 36px rgba(15,23,42,.10);}
+.page-pokemon .card-product .card-media{position:relative;aspect-ratio:4/3;background:#f6f7fb;}
+.page-pokemon .card-product .card-media img{width:100%;height:100%;object-fit:contain;display:block;}
+.page-pokemon .card-product .badge-out{
+  position:absolute;left:12px;top:12px;padding:.4rem .6rem;font-size:.78rem;line-height:1;
+  border-radius:999px;color:#9f1239;background:#fff1f2;border:1px solid #fda4af;box-shadow:0 6px 14px rgba(0,0,0,.08);
+}
+.page-pokemon .card-product .card-body{padding:14px 16px 16px;}
+.page-pokemon .card-product .card-title{margin:0 0 .35rem;font-weight:800;font-size:1.05rem;}
+.page-pokemon .card-product .card-title a{color:inherit;text-decoration:none;}
+.page-pokemon .card-product .card-title a:hover{text-decoration:underline;}
+.page-pokemon .price-row{display:flex;gap:8px;align-items:baseline;}
+.page-pokemon .price-old{color:#9ca3af;text-decoration:line-through;}
+.page-pokemon .price-now{font-weight:800;color:#0f172a;}
+
+/* Toolbar filtros / ordenar */
+.page-pokemon .pkm-toolbar{
+  display:flex;justify-content:space-between;align-items:center;gap:16px;margin:16px 0;
+}
+.page-pokemon .pkm-toolbar .left,
+.page-pokemon .pkm-toolbar .right{display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+.page-pokemon .pkm-pill{
+  background:#fff;border:1px solid rgba(0,0,0,.08);padding:6px 10px;border-radius:999px;font-weight:600;
+  box-shadow:0 1px 3px rgba(0,0,0,.06);
+}
+.page-pokemon .pkm-wrap{position:relative;display:inline-block;}
+.page-pokemon .pkm-flyout{
+  position:absolute;top:calc(100% + 8px);left:0;z-index:40;background:#fff;border:1px solid rgba(0,0,0,.08);
+  border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,.12);padding:6px;display:flex;flex-direction:column;gap:4px;
+}
+.page-pokemon .pkm-flyout button{text-align:left;padding:8px 10px;border-radius:8px;font-weight:600;}
+.page-pokemon .pkm-flyout button:hover{background:#f5f5f7;}
+
+/* Héroe: disposición simple */
+.page-pokemon .grid-hero{
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:24px;align-items:center;
+}
+@media (max-width: 960px){
+  .page-pokemon .grid-hero{grid-template-columns:1fr;}
+  .page-pokemon .hero-media{order:-1;}
+}
+
+/* ===== PATCH Pokémon: imágenes centradas + menús inicialmente cerrados ===== */
+
+/* Garantiza que cualquier [hidden] esté realmente oculto (por si algo lo pisa) */
+.page-pokemon [hidden] { display: none !important; }
+
+/* Cards: mismo tamaño y centradas, estilo limpio */
+.page-pokemon .pkm-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+  gap:24px;
+  margin:16px 0 48px;
+}
+.page-pokemon .card.card-product{
+  background:#fff;border:1px solid rgba(15,23,42,.06);border-radius:20px;overflow:hidden;
+  box-shadow:0 8px 24px rgba(15,23,42,.06);transition:transform .18s ease, box-shadow .18s ease;
+}
+.page-pokemon .card.card-product:hover{transform:translateY(-2px);box-shadow:0 14px 36px rgba(15,23,42,.10);}
+
+/* Media cuadrada (tipo catálogo moderno) + centrado perfecto */
+.page-pokemon .card-product .card-media{
+  position:relative;
+  display:grid;place-items:center;
+  aspect-ratio:1/1;           /* cuadrado para evitar “huecos” */
+  padding:12px;
+  background:#f6f7fb;
+}
+.page-pokemon .card-product .card-media img{
+  max-width:100%;max-height:100%;
+  width:auto;height:auto;
+  object-fit:contain;         /* no recorta el producto */
+  display:block;
+}
+
+/* Badge Agotado */
+.page-pokemon .card-product .badge-out{
+  position:absolute;left:12px;top:12px;padding:.4rem .6rem;font-size:.78rem;line-height:1;
+  border-radius:999px;color:#9f1239;background:#fff1f2;border:1px solid #fda4af;box-shadow:0 6px 14px rgba(0,0,0,.08);
+}
+
+/* Texto y precios */
+.page-pokemon .card-product .card-body{padding:14px 16px 16px;}
+.page-pokemon .card-product .card-title{margin:0 0 .35rem;font-weight:800;font-size:1.05rem;}
+.page-pokemon .card-product .card-title a{color:inherit;text-decoration:none;}
+.page-pokemon .card-product .card-title a:hover{text-decoration:underline;}
+.page-pokemon .price-row{display:flex;gap:8px;align-items:baseline;}
+.page-pokemon .price-old{color:#9ca3af;text-decoration:line-through;}
+.page-pokemon .price-now{font-weight:800;color:#0f172a;}
+
+/* Flyouts más pro (cerrados por defecto) */
+.page-pokemon .pkm-toolbar{display:flex;justify-content:space-between;align-items:center;gap:16px;margin:16px 0;}
+.page-pokemon .pkm-toolbar .left,
+.page-pokemon .pkm-toolbar .right{display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+.page-pokemon .pkm-pill{
+  background:#fff;border:1px solid rgba(0,0,0,.08);padding:6px 10px;border-radius:999px;font-weight:600;
+  box-shadow:0 1px 3px rgba(0,0,0,.06);
+}
+.page-pokemon .pkm-wrap{position:relative;display:inline-block;}
+.page-pokemon .pkm-flyout{
+  position:absolute;top:calc(100% + 8px);left:0;z-index:40;
+  background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:12px;
+  box-shadow:0 10px 30px rgba(0,0,0,.12);padding:8px;display:flex;flex-direction:column;gap:6px;
+  min-width: 190px;
+}
+.page-pokemon .pkm-flyout button{
+  text-align:left;padding:8px 10px;border-radius:8px;font-weight:600;
+}
+.page-pokemon .pkm-flyout button:hover{background:#f5f5f7;}
+
+.page-pokemon .card-desc{
+  margin: .15rem 0 .5rem;
+  color: #6b7280;
+  font-size: 0.92rem;
+  line-height: 1.25rem;
+  max-height: calc(1.25rem * 2); /* 2 líneas */
+  overflow: hidden;
+}
+
+/* --- Google Reviews --- */
+#google-reviews .review-grid{
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap:20px;
+}
+#google-reviews .review-card{
+  background:#fff;
+  border:1px solid rgba(0,0,0,.06);
+  border-radius:20px;
+  box-shadow:0 12px 30px rgba(0,0,0,.06);
+  padding:18px 16px;
+}
+#google-reviews .review-name{
+  margin:0 0 6px;
+  font-weight:700;
+}
+#google-reviews .review-text{
+  color:#475569;           /* gris suave, consistente con el resto del sitio */
+  margin:0 0 10px;
+  line-height:1.6;
+}
+#google-reviews .review-stars{
+  color:#f59e0b;           /* dorado para las estrellas */
+  letter-spacing:2px;
+  font-size:16px;
+}
+
+/* Responsivo */
+@media (max-width: 1024px){
+  #google-reviews .review-grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 640px){
+  #google-reviews .review-grid{ grid-template-columns: 1fr; }
+}
+
+/* --- Google Reviews: separar del footer y mantener centrado --- */
+#google-reviews{
+  /* si ya lo centras con tu .container, deja solo el margin-bottom */
+  margin: 32px auto 96px;   /* aire abajo antes del footer */
+  padding-bottom: 1px;      /* evita colapso de márgenes del último hijo */
+  /* si no usas .container, puedes sumar max-width y padding lateral: */
+  /* max-width: 1080px; padding-inline: 16px; */
+}
+
+#google-reviews .review-title{
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Mantén tu regla existente de la grilla; solo asegúrate de que esté centrada */
+#google-reviews .review-grid{
+  justify-content: center;  /* centra la(s) fila(s) */
+}

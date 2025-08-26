@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="es-CO">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Blog / Post — MagicColombia</title>
+
+  <!-- Rutas correctas desde /html -->
+  <link rel="stylesheet" href="../css/style.magiccolombia.css">
+  <link rel="icon" type="image/png" href="../images/Logo/01.png">
+
+  <!-- Micro-estilos locales para el blog -->
+  <style>
+    :root { --brand:#6d28d9; --ink:#0f172a; --muted:#6b7280; --line:rgba(0,0,0,.08); }
+    .blog-toolbar{background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px;box-shadow:0 6px 18px rgba(0,0,0,.04);display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+    .blog-toolbar .input, .blog-toolbar .select{height:40px;border-radius:12px;border:1px solid var(--line);padding:0 12px;background:#fff}
+    .blog-toolbar .input:focus, .blog-toolbar .select:focus{outline:2px solid rgba(109,40,217,.15);border-color:var(--brand)}
+    .post-grid{display:grid;gap:18px}
+    @media(min-width:700px){.post-grid{grid-template-columns:1fr 1fr}}
+    @media(min-width:1100px){.post-grid{grid-template-columns:1fr 1fr 1fr}}
+    .post-card{display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 12px 30px rgba(0,0,0,.06)}
+    .post-cover{aspect-ratio:16/9;background:#f3f4f6;object-fit:cover;width:100%}
+    .post-body{padding:14px 14px 16px}
+    .post-meta{display:flex;gap:8px;align-items:center;color:var(--muted);font-size:.9rem;margin-bottom:6px}
+    .badge{display:inline-flex;gap:6px;align-items:center;padding:4px 10px;border-radius:999px;background:#f1f5f9;font-size:.8rem;margin-right:6px}
+    .badge.cat-news{background:#eef2ff;color:#3730a3}
+    .badge.cat-guides{background:#ecfeff;color:#155e75}
+    .badge.cat-reviews{background:#fef9c3;color:#854d0e}
+    .post-title{font-size:1.05rem;line-height:1.35;margin:.2rem 0 .35rem;color:var(--ink)}
+    .post-desc{color:#475569;margin:0 0 .9rem}
+    .post-actions{display:flex;gap:10px;align-items:center;justify-content:space-between}
+    .btn-pill{border-radius:999px}
+    .small-muted{color:var(--muted)}
+  </style>
+</head>
+
+<body class="theme-light">
+  <!-- HEADER (igual al resto del sitio) -->
+  <header class="site-header">
+    <div class="nav">
+      <div class="nav-left">
+        <a class="brand" href="../index.html" aria-label="MagicColombia">
+          <img src="../images/Logo/01.png" alt="MagicColombia">
+        </a>
+        <nav id="primary-menu" class="menu menu-icons" aria-label="Navegación principal">
+          <a href="tienda.html" class="icon-link" title="Catálogo" aria-label="Catálogo">
+            <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/>
+              <rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/>
+            </svg>
+            <span class="sr-only">Catálogo</span>
+          </a>
+          <a href="blog.html" class="icon-link" aria-current="page" title="Post" aria-label="Post">
+            <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <rect x="3" y="4" width="18" height="16" rx="2"/>
+              <line x1="7" y1="8" x2="17" y2="8"/>
+              <line x1="7" y1="12" x2="17" y2="12"/>
+              <line x1="7" y1="16" x2="12" y2="16"/>
+            </svg>
+            <span class="sr-only">Post</span>
+          </a>
+        </nav>
+      </div>
+
+      <div class="auth-ctas">
+        <a class="btn-outline" href="login.html">Iniciar sesión</a>
+        <a class="btn" href="account.html">Registrar</a>
+      </div>
+
+      <button class="burger" type="button" data-menu-toggle aria-label="Abrir menú"
+              aria-controls="primary-menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="container pad-y-sm">
+      <h1 class="h3 m-0">Blog / Post</h1>
+      <p class="small m-0 small-muted">Noticias, guías y reseñas para la comunidad.</p>
+    </section>
+
+    <!-- Barra de búsqueda / filtro -->
+    <section class="container">
+      <div class="blog-toolbar" role="group" aria-label="Filtros del blog">
+        <input id="searchPost" class="input" type="search" placeholder="Buscar guía, reseña o noticia…" aria-label="Buscar en el blog" style="min-width:240px">
+        <select id="catPost" class="select" aria-label="Categoría">
+          <option value="">Todas las categorías</option>
+          <option value="news">Noticias</option>
+          <option value="guides">Guías</option>
+          <option value="reviews">Reseñas</option>
+        </select>
+        <span id="postCount" class="small small-muted" aria-live="polite"></span>
+      </div>
+    </section>
+
+    <!-- Grid de posts -->
+    <section class="container pad-y">
+      <div id="posts" class="post-grid" aria-live="polite">
+        <!-- Ejemplos (puedes duplicar/editar) -->
+        <article class="post-card" data-cat="news" data-title="Nuevas preventas y reposiciones">
+          <img class="post-cover" src="../images/carrusel/img.5.jpg" alt="Nuevas preventas y reposiciones">
+          <div class="post-body">
+            <div class="post-meta">
+              <span class="badge cat-news">Noticia</span>
+              <time datetime="2025-08-14">14 ago 2025</time>
+            </div>
+            <h3 class="post-title">Nuevas preventas y reposiciones</h3>
+            <p class="post-desc">Fechas clave y cómo asegurar tu producto a tiempo.</p>
+            <div class="post-actions">
+              <a class="btn btn-pill" href="#" aria-label="Leer más sobre Nuevas preventas y reposiciones">Leer más →</a>
+              <span class="small-muted">3 min</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="post-card" data-cat="guides" data-title="Cómo proteger tus cartas: fundas y top loaders">
+          <img class="post-cover" src="../images/carrusel/img.6.jpg" alt="Cómo proteger tus cartas">
+          <div class="post-body">
+            <div class="post-meta">
+              <span class="badge cat-guides">Guía</span>
+              <time datetime="2025-08-11">11 ago 2025</time>
+            </div>
+            <h3 class="post-title">Cómo proteger tus cartas: fundas y top loaders</h3>
+            <p class="post-desc">Elige la protección correcta según el tipo de carta.</p>
+            <div class="post-actions">
+              <a class="btn btn-pill" href="#" aria-label="Leer guía de protección">Leer más →</a>
+              <span class="small-muted">5 min</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="post-card" data-cat="reviews" data-title="Boosters vs. Caja: ¿qué conviene más?">
+          <img class="post-cover" src="../images/carrusel/img.4.jpg" alt="Boosters vs. Caja">
+          <div class="post-body">
+            <div class="post-meta">
+              <span class="badge cat-reviews">Reseña</span>
+              <time datetime="2025-08-07">7 ago 2025</time>
+            </div>
+            <h3 class="post-title">Boosters vs. Caja: ¿qué conviene más?</h3>
+            <p class="post-desc">Probabilidades, valor esperado y objetivos del jugador.</p>
+            <div class="post-actions">
+              <a class="btn btn-pill" href="#" aria-label="Leer reseña de boosters vs caja">Leer más →</a>
+              <span class="small-muted">4 min</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER igual al resto -->
+  <footer class="site-footer">
+    <div class="container grid">
+      <section>
+        <h4>MagicColombia</h4>
+        <p>Desde 2002 con la comunidad TCG.</p>
+        <small>© 2025 MagicColombia. Todos los derechos reservados.</small>
+      </section>
+      <section>
+        <h4>Links Rápidos</h4>
+        <ul>
+          <li><a href="search.html">Búsqueda</a></li>
+          <li><a href="terminos.html">Términos del servicio</a></li>
+          <li><a href="reembolsos.html">Política de reembolso</a></li>
+        </ul>
+      </section>
+      <section>
+        <h4>Sobre Nosotros</h4>
+        <p>Carrera 65 # 5-107 · Cali · Colombia</p>
+        <p>E-mail: <a href="mailto:ventas@magiccolombia.com">ventas@magiccolombia.com</a></p>
+        <p>WhatsApp/Celular 3045511764</p>
+      </section>
+    </div>
+  </footer>
+
+  <!-- JS pequeño para filtrar -->
+  <script>
+    (function(){
+      const $q = document.getElementById('searchPost');
+      const $cat = document.getElementById('catPost');
+      const $count = document.getElementById('postCount');
+      const $posts = [...document.querySelectorAll('#posts .post-card')];
+
+      function apply(){
+        const q = ($q.value||'').toLowerCase().trim();
+        const c = $cat.value;
+        let visible = 0;
+        $posts.forEach(card=>{
+          const okCat = !c || card.dataset.cat === c;
+          const okTxt = !q || card.dataset.title.toLowerCase().includes(q);
+          const show = okCat && okTxt;
+          card.style.display = show ? '' : 'none';
+          if (show) visible++;
+        });
+        $count.textContent = `Mostrando ${visible} post${visible!==1?'s':''}`;
+      }
+      $q.addEventListener('input', apply);
+      $cat.addEventListener('change', apply);
+      apply();
+    })();
+  </script>
+</body>
+</html>
