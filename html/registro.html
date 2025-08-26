@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="es-CO">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Registrarse — MagicColombia</title>
+
+  <link rel="stylesheet" href="../css/style.magiccolombia.css">
+  <link rel="icon" type="image/png" href="../images/Logo/01.png">
+
+  <style>
+    :root { --brand:#6d28d9; --line:rgba(0,0,0,.08); --muted:#6b7280; }
+    .auth-wrap{display:grid;place-items:center}
+    .auth-card{width:100%;max-width:560px;background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 16px 40px rgba(0,0,0,.08);padding:22px}
+    .auth-head{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+    .auth-sub{color:var(--muted);margin:0 0 12px}
+    .auth-form{display:grid;gap:12px}
+    .input{height:44px;border-radius:12px;border:1px solid var(--line);padding:0 12px;background:#fff}
+    .input:focus{outline:2px solid rgba(109,40,217,.15);border-color:var(--brand)}
+    .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+    .hint{color:var(--muted);font-size:.9rem}
+    .btns{display:flex;gap:10px;flex-wrap:wrap}
+    .hr{height:1px;background:var(--line);margin:14px 0}
+    .social{display:flex;gap:10px;flex-wrap:wrap}
+    .btn-icon{display:inline-flex;align-items:center;gap:8px}
+    .btn-icon svg{width:18px;height:18px}
+  </style>
+</head>
+
+<body class="theme-light density-roomy">
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="nav">
+      <div class="nav-left">
+        <a class="brand" href="../index.html" aria-label="MagicColombia">
+          <img src="../images/Logo/01.png" alt="MagicColombia">
+        </a>
+        <nav id="primary-menu" class="menu menu-icons" aria-label="Navegación principal">
+          <a href="tienda.html" class="icon-link" title="Catálogo" aria-label="Catálogo">
+            <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/>
+              <rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/>
+            </svg>
+            <span class="sr-only">Catálogo</span>
+          </a>
+          <a href="blog.html" class="icon-link" title="Post" aria-label="Post">
+            <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <rect x="3" y="4" width="18" height="16" rx="2"/>
+              <line x1="7" y1="8" x2="17" y2="8"/>
+              <line x1="7" y1="12" x2="17" y2="12"/>
+              <line x1="7" y1="16" x2="12" y2="16"/>
+            </svg>
+            <span class="sr-only">Post</span>
+          </a>
+        </nav>
+      </div>
+
+      <button class="burger" type="button" data-menu-toggle aria-label="Abrir menú"
+              aria-controls="primary-menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+  
+  <main class="container pad-y auth-wrap" style="margin-top:48px;margin-bottom:48px">
+    <section class="auth-card">
+      <div class="auth-head">
+        <h2 class="h4 m-0">Crear Cuenta</h2>
+      </div>
+
+      <form id="registerForm" class="auth-form" novalidate>
+        <div id="registerMessage" class="alert hidden"></div>
+
+        <label class="visually-hidden" for="registerName">Nombre completo:</label>
+        <input class="input" id="registerName" type="text" placeholder="Nombre completo" name="name" autocomplete="username" required>
+            
+        <label class="visually-hidden" for="email">Correo electrónico:</label>
+        <input class="input" id="email" name="email" type="email" placeholder="Correo electrónico" required>
+        
+        <div class="form-group">
+            <label for="pais">País:</label>
+            <select id="pais" name="pais">
+                <option value="+57">Colombia (+57)</option>
+                <option value="+52">México (+52)</option>
+                <option value="+1">Estados Unidos (+1)</option>
+                <option value="+34">España (+34)</option>
+            </select>
+            <br><br>
+            <label class="visually-hidden" for="telefono">Telefono:</label>
+            <input class="input" id="telefono" type="tel" name="telefono" placeholder="Número de teléfono" autocomplete="username" required>
+        </div>
+
+        <div>
+          <label class="visually-hidden" for="password">Contraseña:</label>
+          <div class="row">
+            <input class="input" id="registerPassword" type="password" name="password" placeholder="Contraseña" autocomplete="current-password" required style="flex:1">
+          </div>
+            <div class="row" style="justify-content:space-between;margin-top:6px">
+          </div>
+        </div>
+
+        <div>
+          <label class="visually-hidden" for="password">Confirmar Contraseña:</label>
+          <div class="row">
+            <input class="input" id="comfirmPassword" type="password" name="confirmPassword" placeholder="Contraseña" autocomplete="current-password" required style="flex:1">
+          </div>
+            <div class="row" style="justify-content:space-between;margin-top:6px">
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Crear Cuenta</button>
+      </form>
+      <p>
+      <div class="divider">
+        <span>¿Ya tienes cuenta?</span>
+      </div>
+    </p>
+      <a href="login.html" class="btn-outline">Iniciar Sesión</a>
+
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container grid">
+      <section>
+        <h4>MagicColombia</h4>
+        <p>Desde 2002 con la comunidad TCG.</p>
+        <small>© 2025 MagicColombia. Todos los derechos reservados.</small>
+      </section>
+      <section>
+        <h4>Links Rápidos</h4>
+        <ul>
+          <li><a href="search.html">Búsqueda</a></li>
+          <li><a href="terminos.html">Términos del servicio</a></li>
+          <li><a href="reembolsos.html">Política de reembolso</a></li>
+        </ul>
+      </section>
+      <section>
+        <h4>Sobre Nosotros</h4>
+        <p>Carrera 65 # 5-107 · Cali · Colombia</p>
+        <p>E-mail: <a href="mailto:ventas@magiccolombia.com">ventas@magiccolombia.com</a></p>
+        <p>WhatsApp/Celular 3045511764</p>
+      </section>
+    </div>
+  </footer>
+  
+  <script src="register.js"></script> 
+
+</body>
+</html>
